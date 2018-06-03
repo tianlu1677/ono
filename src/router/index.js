@@ -1,104 +1,104 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-Vue.use(Router)
+import Vue from "vue";
+import Router from "vue-router";
+Vue.use(Router);
 
-import store from '../store'
+import store from "../store";
 import {getToken} from "@/common/js/cookies";
 
-import Home from "pages/home"
-import Mine from "pages/mine"
-import Rank from "pages/rank"
-import SignIn from "pages/sign_in"
-import About from "pages/about"
-import HowToPlay from "pages/how_to_play"
+import Home from "pages/home";
+import Mine from "pages/mine";
+import Rank from "pages/rank";
+import SignIn from "pages/sign_in";
+import About from "pages/about";
+import HowToPlay from "pages/how_to_play";
 
-import InviteLogs from "pages/invite_logs"
+import InviteLogs from "pages/invite_logs";
 
-const router = new Router({  
-  base: '/ono',  
+const router = new Router({
+  base: "/ono",
   routes: [
     {
-      path: '/',
-      redirect: '/home'
+      path: "/",
+      redirect: "/home"
     },
     {
       path: "*",
       redirect: "/home"
     },
     {
-      path: '/home',
-      name: 'home',
+      path: "/home",
+      name: "home",
       component: Home,
       meta: {
         auth: true,
-        title: '首页',
+        title: "首页",
         keepAlive: true
-      }
-    },    
-    {
-      path: '/rank',
-      name: 'rank',
-      component: Rank,
-      meta: {
-        auth: true,
-        title: '排行榜',        
-      }
-    },  
-    {
-      path: '/mine',
-      name: 'mine',
-      component: Mine,
-      meta: {
-        auth: true,
-        title: '个人中心',        
-      }
-    },  
-    {
-      path: '/invite_logs',
-      name: 'invite_logs',
-      component: InviteLogs,
-      meta: {
-        auth: true,
-        title: '提取记录',        
-      }
-    }, 
-    {
-      path: '/sign_in',
-      name: 'sign_in',
-      component: SignIn,
-      meta: {
-        auth: true,
-        title: '登录'     
       }
     },
     {
-      path: '/about',
-      name: 'about',
+      path: "/rank",
+      name: "rank",
+      component: Rank,
+      meta: {
+        auth: true,
+        title: "排行榜"
+      }
+    },
+    {
+      path: "/mine",
+      name: "mine",
+      component: Mine,
+      meta: {
+        auth: true,
+        title: "个人中心"
+      }
+    },
+    {
+      path: "/invite_logs",
+      name: "invite_logs",
+      component: InviteLogs,
+      meta: {
+        auth: true,
+        title: "提取记录"
+      }
+    },
+    {
+      path: "/sign_in",
+      name: "sign_in",
+      component: SignIn,
+      meta: {
+        auth: true,
+        title: "登录"
+      }
+    },
+    {
+      path: "/about",
+      name: "about",
       component: About,
       meta: {
         auth: true,
-        title: '关于',        
+        title: "关于"
       }
-    },  
+    },
 
     {
-      path: '/how_to_play',
-      name: 'how_to_play',
+      path: "/how_to_play",
+      name: "how_to_play",
       component: HowToPlay,
       meta: {
         auth: true,
-        title: '攻略',        
+        title: "攻略"
       }
-    },  
+    },
 
     {
-      path: '/sign_up',
+      path: "/sign_up",
       beforeEnter() {
         // location.href = url
       }
     }
   ]
-})
+});
 
 // 用户的登录验证
 //  需要登录的部分.
@@ -107,7 +107,7 @@ const router = new Router({
 // 2. 如果token 不存在，则去调用微信的接口去获取用户的信息
 
 router.beforeEach(async (to, from, next) => {
-  let token = getToken()
+  let token = getToken();
   // if (to.matched.some(record => record.meta.loading)) {
   //   store.commit('UPDATE_LOADING', {isLoading: true})
   // }
@@ -128,26 +128,24 @@ router.beforeEach(async (to, from, next) => {
   // } else {
   //   next()
   // }
-  next()
-})
+  next();
+});
 
-router.afterEach((to) => {
-  
-})
+router.afterEach(to => {});
 
 // 设置title
 function changeDocumentTitle(to) {
   if (to.meta.title) {
-    document.title = to.meta.title
+    document.title = to.meta.title;
   }
 }
 
 function recordLastPage(from_path) {
-  let record_path = ['home', 'new_topic', 'mine']
-  record_path.forEach((path) => {
+  let record_path = ["home", "new_topic", "mine"];
+  record_path.forEach(path => {
     if (from_path.indexOf(path) >= 0) {
-      localStorage.setItem('lastPath', from_path)
+      localStorage.setItem("lastPath", from_path);
     }
-  })
+  });
 }
 export default router;

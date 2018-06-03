@@ -52,6 +52,10 @@
   width: 80%;
 }
 
+.width-100 {
+  width: 100%;
+}
+
 /* color */
 .background-green {
   background-color: #259b20;
@@ -70,7 +74,7 @@
 }
 
 .color-orange {
-  color: #dfb03f;
+  color: #dfb03f !important;
 }
 
 .color-pink {
