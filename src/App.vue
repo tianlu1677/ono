@@ -1,20 +1,15 @@
 <template>
   <div id="app">
     <!--<transition name="fade">-->
-    <transition name="slide">
-      <div :class="{'is-edge-back':$isEdgeLeft,'is-edge-forward':$isEdgeRight}">
-        <!-- <navigation> -->
-        <keep-alive>
-          <router-view v-if="$route.meta.keepAlive"></router-view>
-        </keep-alive>
-
-        <router-view v-if="!$route.meta.keepAlive"></router-view>
-      </div>
+    <!-- <transition name="fade"> -->
+      
+      <router-view></router-view>
+     <!-- ssss      -->
       <!-- </navigation> -->
-    </transition>
+    <!-- </transition> -->
     <!--</transition>-->
-    <loading v-model="isLoading"></loading>
-    <share-dialog v-show="showShare"></share-dialog>
+    <!-- <loading v-model="isLoading"></loading> -->
+    <!-- <share-dialog v-show="showShare"></share-dialog> -->
   </div>
 </template>
 
@@ -29,8 +24,8 @@
     },
     computed: {
       ...mapGetters({
-        showShare: 'showShare',
-        isLoading: 'isLoading'
+        // showShare: 'showShare',
+        // isLoading: 'isLoading'
       })
     }
   }
