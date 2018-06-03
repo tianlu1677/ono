@@ -1,34 +1,35 @@
 <template>
-  <div class="home">
-    
-    home
-    <bottom-nav></bottom-nav>
+  <div class="about">
+    <div v-html="about"></div>
   </div>
 </template>
 
-<script>  
-  import BottomNav from 'components/bottom-nav/bottom-nav'
+<script>
+  import {getAbout} from "@/api/account_api";
   export default {
     name: "about",
-    
-    components: {      
-      BottomNav
+
+    components: {
     },
     data() {
       return {
-        
+        about: ''
+
       }
     },
-    created() {
-      
+    async created() {
+      const res = await getAbout()
+      this.about = res.ono_about_project
     },
 
     methods: {
-      
+
     }
   }
 </script>
 
 <style lang="scss">
- 
+  .about {
+    padding: 20px;
+  }
 </style>

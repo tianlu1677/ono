@@ -31,7 +31,7 @@ export async function signIn(data = {phone: '', phone_verify: ''}) {
   return res.data
 }
 
-// # 榜单 
+// # 榜单
 export async function getRank(params = {}) {
   const res = await request({
     url: `/api/ono/v1/accounts/sign_in.json`,
@@ -42,7 +42,7 @@ export async function getRank(params = {}) {
 }
 
 // 邀请
-// 
+//
 export async function setInvite(data = {share: ''}) {
   const res = await request({
     url: `/api/ono/v1/invite.json`,
@@ -74,7 +74,7 @@ export async function getSiteSettings(params = {}) {
 // 关于项目
 export async function getAbout(params = {}) {
   const res = await request({
-    url: `/api/ono/v1/agreement.json`,
+    url: `/api/ono/v1/site_configs/agreement.json`,
     method: 'GET',
     params: params
   })
@@ -106,7 +106,7 @@ export async function getAbout(params = {}) {
 //     'wechat-token': '452318b8-8bfd-4821-aba7-f40be2d60d82'
 // }
 // ```
-// # 榜单 
+// # 榜单
 // ```
 // GET  http://test.niubibeta.com/api/ono/v1/accounts/rank.json
 // params: {
@@ -123,9 +123,9 @@ export async function getAbout(params = {}) {
 // ```
 // # 邀请
 // ```
-// POST  localhost:4000/api/ono/v1/accounts/invite.json 
+// POST  localhost:4000/api/ono/v1/accounts/invite.json
 // share = Base64.encode('3427' + this.userInfo.id); #当前用户的ID
 // data: {
-//     share: '' 
+//     share: ''
 // }
 // ```

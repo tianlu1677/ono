@@ -1,35 +1,36 @@
 <template>
   <div class="about">
-    
-    
-    <!-- <bottom-nav></bottom-nav> -->
+
+    <div v-html="how_to_play"></div>
   </div>
 </template>
 
-<script>  
-  import BottomNav from 'components/bottom-nav/bottom-nav'
+<script>
+  import {getAbout} from "@/api/account_api";
 
   export default {
     name: "how_to_play",
-    
+
     components: {
-      BottomNav
     },
     data() {
       return {
-        
+        how_to_play: ''
       }
     },
-    created() {
-      
+    async created() {
+      const res = await getAbout()
+      this.how_to_play = res.ono_how_to_play
+
     },
 
+
     methods: {
-      
+
     }
   }
 </script>
 
 <style lang="scss">
- 
+
 </style>

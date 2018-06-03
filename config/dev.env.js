@@ -5,5 +5,5 @@ const prodEnv = require('./prod.env')
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
   // API_HOST: '"http://xinxue.niubibeta.com"'
-  API_HOST: '"http://localhost:5000"',
+  API_HOST: '"http://localhost:4000"',
 })
