@@ -20,10 +20,6 @@
     async created() {
       const res = await getAbout()
       this.about = res.ono_about_project
-    },
-
-    methods: {
-
     }
   }
 </script>
@@ -32,4 +28,5 @@
   .about {
     padding: 20px;
   }
+
 </style>
