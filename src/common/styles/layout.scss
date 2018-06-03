@@ -55,7 +55,9 @@
 /* end */
 
 /*  login*/
+
 .login-header .get-pocket {
+  position: relative;
   margin: 10px 0;
   padding: 0 5px 0 5px;
   display: block;
@@ -64,6 +66,18 @@
   line-height: 40px;
   border: 1px solid #eee;
 }
+
+.login-header .get-pocket-container {
+  display: block;
+  position: relative;
+}
+
+.login-header .get-pocket-icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
 /* end */
 /* 滚动 */
 .box {
