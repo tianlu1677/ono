@@ -1,0 +1,8 @@
+/build/
+/config/
+/dist/
+/*.js
+/test/unit/coverage/
+
+# DONT'T USE ESLINT NOW!
+/src/
