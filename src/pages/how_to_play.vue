@@ -1,17 +1,18 @@
 <template>
-  <div class="home">
+  <div class="about">
     
-    home
-    <bottom-nav></bottom-nav>
+    
+    <!-- <bottom-nav></bottom-nav> -->
   </div>
 </template>
 
 <script>  
   import BottomNav from 'components/bottom-nav/bottom-nav'
+
   export default {
     name: "how_to_play",
     
-    components: {      
+    components: {
       BottomNav
     },
     data() {

@@ -15,7 +15,7 @@
       <li class="item" @click="goPages('mine')">
         <img src="../../common/images/my_blue.png" height="22.5" width="22.5" alt="" class="icon" v-if="currentTab==='mine'"> 
         <img src="../../common/images/my_grey.png" height="22.5" width="22.5" alt="" class="icon" v-else> 
-        <span class="text">我</span>
+        <span class="text">我的</span>
       </li>
     </ul>
   </div>
