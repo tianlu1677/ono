@@ -3,18 +3,18 @@
     <div class="border-top-1px"></div>
     <ul class="item-list">
       <li class="item" @click="goPages('home')">
-        <img src="../../common/images/home_blue.png" height="22.5" width="22.5" alt="" class="icon">
-        <!-- <span class="icon" :class="[highlight ? 'icon-home-solid' : 'icon-home']"></span> -->
+        <img src="../../common/images/home_blue.png" height="22.5" width="22.5" alt="" class="icon" v-if="currentTab==='home'"> 
+        <img src="../../common/images/home_grey.png" height="22.5" width="22.5" alt="" class="icon" v-else>       
         <span class="text">首页</span>
       </li>
       <li class="item" @click="goPages('rank')">
-        <img src="../../common/images/rank_blue.png" height="22.5" width="22.5" alt="" class="icon">
+        <img src="../../common/images/rank_blue.png" height="22.5" width="22.5" alt="" class="icon" v-if="currentTab === 'rank'"> 
+        <img src="../../common/images/rank_grey.png" height="22.5" width="22.5" alt="" class="icon" v-else> 
         <span class="text">榜单</span>
       </li>
       <li class="item" @click="goPages('mine')">
-        <img src="../../common/images/my_blue.png" height="22.5" width="22.5" alt="" class="icon">
-
-        <!-- <span class="icon" :class="[!highlight ? 'icon-user-solid' : 'icon-user']"></span> -->
+        <img src="../../common/images/my_blue.png" height="22.5" width="22.5" alt="" class="icon" v-if="currentTab==='mine'"> 
+        <img src="../../common/images/my_grey.png" height="22.5" width="22.5" alt="" class="icon" v-else> 
         <span class="text">我</span>
       </li>
     </ul>
@@ -25,17 +25,23 @@
   import {mapGetters} from 'vuex'
   export default {
     name: "bottom-nav",
-    
-  
+    data() {
+      return {
+        home: '../../common/images/home_grey.png',
+        rank: '../../common/images/rank_grey.png',
+        mine: '../../common/images/my_grey.png'
+      }
+    },
+
     computed: {
       ...mapGetters(['route']),
       currentTab() {
-        const path = this.$router.path
+        const path = this.$route.path
         if(path.indexOf('home') >= 0 ){
-           return 'home'
-        } else if (path.indexOf('mine') >= 0 ) {
+          return 'home'           
+        } else if (path.indexOf('mine') >= 0 ) {          
           return 'mine'
-        } else {
+        } else {          
           return 'rank'
         }
       }
