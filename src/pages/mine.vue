@@ -5,30 +5,22 @@
   </div>
 </template>
 
-<script>  
-  import BottomNav from 'components/bottom-nav/bottom-nav'  
-  export default {
+<script>
+import BottomNav from "components/bottom-nav/bottom-nav";
+export default {
     name: "mine",
-    
+
     components: {
-      
-      BottomNav
+        BottomNav
     },
     data() {
-      return {
-        
-      }
+        return {};
     },
-    created() {
-      
-    },
+    created() {},
 
-    methods: {
-      
-    }
-  }
+    methods: {}
+};
 </script>
 
 <style lang="scss">
- 
 </style>

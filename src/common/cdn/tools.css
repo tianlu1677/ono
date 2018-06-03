@@ -1,0 +1,78 @@
+/* display */
+.inline-block {
+  display: inline-block;
+}
+
+.flex-center {
+  justify-content: center;
+  display: flex;
+}
+
+.flex-center-vertical {
+  align-items: center; /*垂直居中*/
+  display: flex;
+}
+
+/* maigin & padding*/
+.margin-top-10 {
+  margin-top: 20px;
+}
+
+.margin-top-50 {
+  margin-top: 50px;
+}
+
+.margin-left-10 {
+  margin-left: 10px;
+}
+
+/* font */
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.font-size-16 {
+  font-size: 16px;
+}
+
+.font-size-48 {
+  font-size: 48px;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.line-height-20 {
+  line-height: 20px;
+}
+
+/* width height */
+.width-80 {
+  width: 80%;
+}
+
+/* color */
+.background-green {
+  background-color: #259b20;
+}
+
+.background-red {
+  background-color: #d45b3f;
+}
+
+.color-black {
+  color: black;
+}
+
+.color-gray {
+  color: #8e8e8e;
+}
+
+.color-orange {
+  color: #dfb03f;
+}
+
+.color-pink {
+  color: #fe8383;
+}

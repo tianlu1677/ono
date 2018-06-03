@@ -1,34 +1,26 @@
 <template>
   <div class="home">
-    
     home
     <bottom-nav></bottom-nav>
   </div>
 </template>
 
-<script>  
-  import BottomNav from 'components/bottom-nav/bottom-nav'
-  export default {
+<script>
+import BottomNav from "components/bottom-nav/bottom-nav";
+export default {
     name: "home",
-    
-    components: {      
-      BottomNav
+
+    components: {
+        BottomNav
     },
     data() {
-      return {
-        
-      }
+        return {};
     },
-    created() {
-      
-    },
+    created() {},
 
-    methods: {
-      
-    }
-  }
+    methods: {}
+};
 </script>
 
 <style lang="scss">
- 
 </style>
