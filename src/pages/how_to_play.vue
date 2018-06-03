@@ -6,6 +6,7 @@
 </template>
 
 <script>
+  import {getAccountInfo} from "@/api/account_api";
   import {getAbout} from "@/api/account_api";
 
   export default {
@@ -21,7 +22,6 @@
     async created() {
       const res = await getAbout()
       this.how_to_play = res.ono_how_to_play
-
     },
 
 
@@ -32,5 +32,7 @@
 </script>
 
 <style lang="scss">
-
+  .about {
+    padding: 20px;
+  }
 </style>

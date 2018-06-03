@@ -34,7 +34,7 @@ export async function signIn(data = {phone: '', phone_verify: ''}) {
 // # 榜单
 export async function getRank(params = {}) {
   const res = await request({
-    url: `/api/ono/v1/accounts/sign_in.json`,
+    url: `/api/ono/v1/accounts/rank.json`,
     method: 'GET',
     params: params
   })

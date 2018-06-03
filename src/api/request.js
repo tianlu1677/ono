@@ -17,8 +17,8 @@ axios.interceptors.response.use((res) => {
 }, (error) => {
   if (error.response) {
     switch (error.response.status) {
-      case 401:
-        window.location.href = ''
+      case 403:
+        // window.location.href = '#/sign_in'
         break
       default:
         console.log('error')
