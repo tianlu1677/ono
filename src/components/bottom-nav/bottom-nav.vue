@@ -3,15 +3,18 @@
     <div class="border-top-1px"></div>
     <ul class="item-list">
       <li class="item" @click="goPages('home')">
-        <span class="icon" :class="[highlight ? 'icon-home-solid' : 'icon-home']"></span>
-        <span class="text">推荐</span>
+        <img src="../../common/images/home_blue.png" height="22.5" width="22.5" alt="" class="icon" v-if="currentTab==='home'"> 
+        <img src="../../common/images/home_grey.png" height="22.5" width="22.5" alt="" class="icon" v-else>       
+        <span class="text">首页</span>
       </li>
-      <li class="item" @click="goPages('topic')">
-        <span class="icon icon-new-topic"></span>
-        <span class="text">打卡</span>
+      <li class="item" @click="goPages('rank')">
+        <img src="../../common/images/rank_blue.png" height="22.5" width="22.5" alt="" class="icon" v-if="currentTab === 'rank'"> 
+        <img src="../../common/images/rank_grey.png" height="22.5" width="22.5" alt="" class="icon" v-else> 
+        <span class="text">榜单</span>
       </li>
       <li class="item" @click="goPages('mine')">
-        <span class="icon" :class="[!highlight ? 'icon-user-solid' : 'icon-user']"></span>
+        <img src="../../common/images/my_blue.png" height="22.5" width="22.5" alt="" class="icon" v-if="currentTab==='mine'"> 
+        <img src="../../common/images/my_grey.png" height="22.5" width="22.5" alt="" class="icon" v-else> 
         <span class="text">我</span>
       </li>
     </ul>
@@ -22,13 +25,24 @@
   import {mapGetters} from 'vuex'
   export default {
     name: "bottom-nav",
+    data() {
+      return {
+        home: '../../common/images/home_grey.png',
+        rank: '../../common/images/rank_grey.png',
+        mine: '../../common/images/my_grey.png'
+      }
+    },
+
     computed: {
       ...mapGetters(['route']),
-      highlight() {
-        if (this.route.path.indexOf('mine') > 0) {
-          return false
-        } else {
-          return true
+      currentTab() {
+        const path = this.$route.path
+        if(path.indexOf('home') >= 0 ){
+          return 'home'           
+        } else if (path.indexOf('mine') >= 0 ) {          
+          return 'mine'
+        } else {          
+          return 'rank'
         }
       }
     },
@@ -37,10 +51,10 @@
         const path = "/" + type
         switch (type) {
           case 'home':
-            this.$router.push({path: path})
+            this.$router.push({path: '/home'})
             break;
-          case 'topic':
-            this.$router.push({path: '/topics/new'})
+          case 'rank':
+            this.$router.push({path: '/rank'})
             break;
           case 'mine':
             this.$router.push({path: '/mine'})
