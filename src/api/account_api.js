@@ -1,72 +1,131 @@
 import request from './request'
 
-//用户的详情页
-export async function getAccount(id) {
+// # 用户个人信息
+export async function getAccountInfo() {
   const res = await request({
-    url: `/api/v1/accounts/${id}`,
+    url: `/api/coin/v1/accounts/info.json`,
     method: 'GET',
   })
   return res.data
 }
 
-// 发布的心得 收藏，喜欢的心得
-// type= publish, praise, star
-export async function getAccountTopics(id, type, params = {}) {
+// # 发送手机验证码
+export async function createPhoneCode(data = {phone: ''}) {
   const res = await request({
-    url: `/api/v1/accounts/${id}/topics`,
-    method: 'GET',
-    params: {
-      type: type,
-      ...params
+    url: `/api/ono/v1/accounts/create_phone_code.json`,
+    method: 'POST',
+    data: {
+      phone: data['phone']
     }
   })
-  return res
+  return res.data
 }
 
-// 发布的课程, 学过的课程， 收藏的课程
-// type: publish, learn, star, praise
-export async function getAccountCourses(id, type = 'publish', params = {}) {
+// # 手机验证码登录
+export async function signIn(data = {phone: '', phone_verify: ''}) {
   const res = await request({
-    url: `/api/v1/accounts/${id}/courses`,
-    method: 'GET',
-    params: {
-      type: type,
-      ...params
-    }
+    url: `/api/ono/v1/accounts/sign_in.json`,
+    method: 'POST',
+    data: data
   })
-  return res
+  return res.data
 }
 
-// 课时, 喜欢收藏的课时
-// type: star, praise
-export async function getAccountLessons(id, type, params = {}) {
+// # 榜单 
+export async function getRank(params = {}) {
   const res = await request({
-    url: `/api/v1/accounts/${id}/lessons`,
+    url: `/api/ono/v1/accounts/sign_in.json`,
     method: 'GET',
-    params: {
-      type: type,
-      ...params
-    }
+    params: params
   })
-  return res
+  return res.data
 }
 
-// 关注
-export async function followAccount(id) {
+// 邀请
+// 
+export async function setInvite(data = {share: ''}) {
   const res = await request({
-    url: `/api/v1/accounts/${id}/follow`,
-    method: 'POST'
+    url: `/api/ono/v1/invite.json`,
+    method: 'POST',
+    data: data
+  })
+  return res.data
+}
+// # 个人中心的获取列表
+export async function getInviteLogs(params = {}) {
+  const res = await request({
+    url: `/api/ono/v1/on_invite_logs.json`,
+    method: 'GET',
+    params: params
+  })
+  return res.data
+}
+
+// 全局配置
+export async function getSiteSettings(params = {}) {
+  const res = await request({
+    url: `/api/ono/v1/site_configs.json`,
+    method: 'GET',
+    params: params
+  })
+  return res.data
+}
+
+// 关于项目
+export async function getAbout(params = {}) {
+  const res = await request({
+    url: `/api/ono/v1/agreement.json`,
+    method: 'GET',
+    params: params
   })
   return res.data
 }
 
 
-// 取消关注
-export async function unfollowAccount(id) {
-  const res = await request({
-    url: `/api/v1/accounts/${id}/unfollow`,
-    method: 'POST'
-  })
-  return res.data
-}
 
+// # 发送手机验证码
+// ```
+// POST localhost:4000/api/ono/v1/accounts/create_phone_code.json
+
+// data: {
+//     phone: '18612300111'
+// }
+// ```
+// # 手机验证码登录
+// ```
+// POST  localhost:4000/api/ono/v1/accounts/sign_in.json
+// data: {
+//     phone:18612300141
+//     phone_verify:798164
+// }
+// ```
+// # 用户个人信息
+// ```
+// GET localhost:4000/api/coin/v1/accounts/info.json
+// headers: {
+//     'wechat-token': '452318b8-8bfd-4821-aba7-f40be2d60d82'
+// }
+// ```
+// # 榜单 
+// ```
+// GET  http://test.niubibeta.com/api/ono/v1/accounts/rank.json
+// params: {
+//     type: 'web'
+// }
+// ```
+// # 个人中心
+// ```
+// GET  localhost:4000/api/ono/v1/on_invite_logs.json
+// ```
+// # 全局配置
+// ```
+// GET localhost:4000/api/ono/v1/site_configs.json
+// ```
+// # 邀请
+// ```
+// POST  localhost:4000/api/ono/v1/accounts/invite.json 
+// share = Base64.encode('3427' + this.userInfo.id); #当前用户的ID
+// data: {
+//     share: '' 
+// }
+// ```

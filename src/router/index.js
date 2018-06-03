@@ -8,6 +8,10 @@ import {getToken} from "@/common/js/cookies";
 import Home from "pages/home"
 import Mine from "pages/mine"
 import Rank from "pages/rank"
+import SignIn from "pages/sign_in"
+import About from "pages/about"
+import HowToPlay from "pages/how_to_play"
+
 import InviteLogs from "pages/invite_logs"
 
 const router = new Router({  
@@ -56,6 +60,34 @@ const router = new Router({
       meta: {
         auth: true,
         title: '提取记录',        
+      }
+    }, 
+    {
+      path: '/sign_in',
+      name: 'sign_in',
+      component: SignIn,
+      meta: {
+        auth: true,
+        title: '登录'     
+      }
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: About,
+      meta: {
+        auth: true,
+        title: '关于',        
+      }
+    },  
+
+    {
+      path: '/how_to_play',
+      name: 'how_to_play',
+      component: HowToPlay,
+      meta: {
+        auth: true,
+        title: '攻略',        
       }
     },  
 
