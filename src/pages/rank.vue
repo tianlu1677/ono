@@ -4,7 +4,7 @@
      <div class="weui-tab list-header">
         <div class="box">
             <div class="winBox">
-              <marquee class="marquee" onMouseOut="this.start()" onMouseOver="this.stop()" behavior="scroll" direction="left">最大的自由、价值平等、去中心化的文章分享中心。</marquee>
+              <marquee class="marquee"  behavior="scroll" direction="left">最大的自由、价值平等、去中心化的文章分享中心。</marquee>
                 <!-- <ul class="scroll">
                     <li>
                         <a href="#">最大的自由、价值平等、去中心化的文章分享中心。</a>

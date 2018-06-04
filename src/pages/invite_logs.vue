@@ -4,9 +4,10 @@
        <div class="weui-tab ono-header">
            
         <div class="box">
-           <marquee class="marquee" onMouseOut="this.start()" onMouseOver="this.stop()" behavior="scroll" direction="left">最大的自由、价值平等、去中心化的文章分享中心。</marquee>
-            <!-- <div class="winBox">
-                <ul class="scroll">
+            <div class="winBox">
+               <marquee class="marquee"  behavior="scroll" direction="left">最大的自由、价值平等、去中心化的文章分享中心。</marquee>
+           
+                <!-- <ul class="scroll">
                     <li>
                         <a href="#">最大的自由、价值平等、去中心化的文章分享中心。</a>
                     </li>
@@ -19,9 +20,9 @@
                     <li>
                         <a href="#">最大的自由、价值平等、去中心化的文章分享中心。</a>
                     </li>
-                </ul>
-            </div> -->
-        </div>
+                </ul> -->
+                </div> 
+            </div>
     </div>
     <div class="weui-tab__bd" style="padding-top: 20px;">
         <div class="main">

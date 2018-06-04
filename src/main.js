@@ -5,6 +5,8 @@ import router from './router'
 import fastclick from 'fastclick'
 import store from './store'
 
+
+
 import {
   Style,
   Toast,  
@@ -13,11 +15,16 @@ import {
 
 Vue.use(Toast)
 Vue.use(Dialog)
+Vue.use(Alert)
+
+
 
 import {
+  Alert,
   XDialog
 } from 'vux'
 
+Vue.component('alert', Alert)
 Vue.component('x-dialog', XDialog)
 
 import ShareDialog from 'components/share-dialog/share-dialog'

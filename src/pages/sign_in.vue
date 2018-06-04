@@ -1,5 +1,14 @@
 <template>
   <div class="home">
+    <!-- <group>
+      <x-switch :title="('Show Me')" v-model="show"></x-switch>
+    </group>
+    <div v-transfer-dom>
+
+      <alert v-model="show" :title="('Congratulations')" @on-show="onShow" @on-hide="onHide"> {{ ('Your Message is sent successfully~') }}</alert>
+    </div> -->
+
+
      <div class="login-header weui-panel weui-panel_access">
         <div class="login-container weui-panel__bd flex-center">
             <div class="weui-media-box__hd " style="width: 90%">
@@ -28,22 +37,65 @@
 <script>
 import {createPhoneCode, signIn} from "@/api/account_api";
 import BottomNav from "components/bottom-nav/bottom-nav";
+import { AlertModule, Alert, Group, XSwitch, Cell, TransferDomDirective as TransferDom } from 'vux';
+import VueWeui from 'vue-weui';
+
 
 export default {
     name: "sgin_in",
-
+    directives: {
+        TransferDom
+    },
     components: {
-        BottomNav
+      VueWeui,
+        BottomNav,
+        Alert,
+        Group,
+        XSwitch,
+        Cell
     },
     data() {
         return {
+            show: false,
+            show1: false,
+            show2: false,
             phoneNumber: "",
             checkNumber: ""
         };
     },
     created() {},
 
+    beforeDestroy() {
+        // clearInterval(this.timer);
+    },
+
+    mounted() {
+        // this.timer = setInterval(() => {
+        //     console.log(this.$vux.alert.isVisible());
+        // }, 1000);
+    },
+
     methods: {
+        // alert
+        onHide () {
+          console.log('on hide')
+        },
+        onShow () {
+          console.log('on show')
+        },
+        showPlugin() {
+          console.log('$vue:',this.$vux);
+           this.$vux.alert.show({
+            title: 'Vux is Cool',
+            content: 'Do you agree?',
+            onShow () {
+              console.log('Plugin: I\'m showing')
+            },
+            onHide () {
+              console.log('Plugin: I\'m hiding')
+            }
+          })
+        },
         //检测是否登录
         checkLogin() {
             //检查是否存在session
@@ -82,11 +134,13 @@ export default {
             // alert("123");
         },
         async getCode() {
-            console.log("test:");
-
-            const res = await createPhoneCode({phone: this.phoneNumber});
-
-            console.log(res);
+            if (this.phoneNumber) {
+                const res = await createPhoneCode({phone: this.phoneNumber});
+                console.log(res);
+            } else {
+                // alert("请输入手机号码");
+                $.toptip("警告", "warning");
+            }
         }
     }
 };

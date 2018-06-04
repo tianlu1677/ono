@@ -30,7 +30,7 @@
 
                 <div class="weui-panel weui-panel_access">
                     <div class="weui-panel__hd" style="padding: 0;">
-                        <a href="/invite_logs" class="weui-cell weui-cell_access weui-cell_link">
+                        <a @click="goLogs" class="weui-cell weui-cell_access weui-cell_link">
                             <img class="weui-tabbar__icon " width="27px" height="27px" src="#" alt="logo">
                             <div class="weui-cell__bd margin-left-10">累积获取</div>
                             <span class="color-gray">320</span>
@@ -68,7 +68,13 @@ export default {
     },
     created() {},
 
-    methods: {}
+    methods: {
+        goLogs(){
+            this.$router.push({
+                path:'/invite_logs'
+            })
+        }
+    }
 };
 </script>
 

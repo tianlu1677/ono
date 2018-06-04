@@ -33,7 +33,7 @@
                     <p class="color-pink weui-media-box__desc">本红包已经有
                         <span id="number">23452</span> 人领取
                     </p>
-                    <a id="get-login" href="javascript:void(0);" class="weui-btn weui-btn_primary weui-btn_md width-80 background-red margin-top-10">
+                    <a id="get-login" @click="checkLogin" class="weui-btn weui-btn_primary weui-btn_md width-80 background-red margin-top-10">
                         立即领取 </a>
                 </div>
             </div>
@@ -61,6 +61,8 @@
 
 <script>
 import {createPhoneCode, signIn} from "@/api/account_api";
+import {getCookie} from "common/js/cookies";
+
 import BottomNav from "components/bottom-nav/bottom-nav";
 
 export default {
@@ -82,13 +84,22 @@ export default {
         checkLogin() {
             //检查是否存在session
             //cookie操作方法在源码里有或者参考网上的即可
-            if (!this.getCookie("session")) {
+            console.log('cookie:',getCookie("tvfe_boss_uuid"));
+            if (getCookie("session")) {
+                console.log('未登录');
                 //如果没有登录状态则跳转到登录页
-                this.$router.push("/login");
+                this.$router.push("/sign_in");
             } else {
                 //否则跳转到登录后的页面
-                this.$router.push("/user_info");
+                console.log("已登录");
+                
+                this.$router.push("/home");
             }
+        },
+        goSignIn(){
+            this.$router.push({
+                path: '/sign_in'
+            })
         },
 
         async sign() {
