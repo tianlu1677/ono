@@ -11,7 +11,7 @@ import Rank from "pages/rank";
 import SignIn from "pages/sign_in";
 import About from "pages/about";
 import HowToPlay from "pages/how_to_play";
-
+import Share from "pages/share";
 import InviteLogs from "pages/invite_logs";
 
 const router = new Router({
@@ -60,6 +60,15 @@ const router = new Router({
       meta: {
         auth: true,
         title: "提取记录"
+      }
+    },
+    {
+      path: "/share",
+      name: "share",
+      component: Share,
+      meta: {
+        auth: true,
+        title: "分享"
       }
     },
     {
@@ -112,7 +121,7 @@ router.beforeEach(async (to, from, next) => {
   //   store.commit('UPDATE_LOADING', {isLoading: true})
   // }
 
-  changeDocumentTitle(to)
+  changeDocumentTitle(to);
 
   // if (!store.state.jsUrl && (to.fullPath.indexOf('login') < 0 || to.fullPath.indexOf('sign_up') < 0)) {
   //   store.commit('SET_WX_JS_URL', document.URL)

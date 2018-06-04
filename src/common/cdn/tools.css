@@ -62,7 +62,7 @@
 }
 
 .background-red {
-  background-color: #d45b3f;
+  background-color: #d45b3f !important;
 }
 
 .color-black {

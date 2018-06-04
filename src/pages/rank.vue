@@ -1,11 +1,11 @@
 <template>
-  <div class="home">
+  <div class="rank">
    
      <div class="weui-tab list-header">
-        <!-- <div class="weui-panel__hd ono-roll" id="ono-roll" style="width: 100%;position: fixed;z-index: 100;background: lightskyblue">图文组合列表</div> -->
         <div class="box">
             <div class="winBox">
-                <ul class="scroll">
+              <marquee class="marquee" onMouseOut="this.start()" onMouseOver="this.stop()" behavior="scroll" direction="left">最大的自由、价值平等、去中心化的文章分享中心。</marquee>
+                <!-- <ul class="scroll">
                     <li>
                         <a href="#">最大的自由、价值平等、去中心化的文章分享中心。</a>
                     </li>
@@ -18,7 +18,7 @@
                     <li>
                         <a href="#">最大的自由、价值平等、去中心化的文章分享中心。</a>
                     </li>
-                </ul>
+                </ul> -->
             </div>
         </div>
     </div>
@@ -46,11 +46,13 @@
 
 <script>
 import BottomNav from "components/bottom-nav/bottom-nav";
+// import VueMarquee from "vue-marquee";
 export default {
     name: "rank",
 
     components: {
         BottomNav
+        // VueMarquee,
     },
     data() {
         return {

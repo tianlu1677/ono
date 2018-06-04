@@ -1,9 +1,11 @@
 <template>
-  <div class="home">
-    home
-     <div class="weui-tab ono-header">
+  <div class="invite_logs">
+   invite_logs
+       <div class="weui-tab ono-header">
+           
         <div class="box">
-            <div class="winBox">
+           <marquee class="marquee" onMouseOut="this.start()" onMouseOver="this.stop()" behavior="scroll" direction="left">最大的自由、价值平等、去中心化的文章分享中心。</marquee>
+            <!-- <div class="winBox">
                 <ul class="scroll">
                     <li>
                         <a href="#">最大的自由、价值平等、去中心化的文章分享中心。</a>
@@ -18,44 +20,45 @@
                         <a href="#">最大的自由、价值平等、去中心化的文章分享中心。</a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </div>
     </div>
-
-     <div class="weui-tab__bd" style="padding-top: 20px;">
+    <div class="weui-tab__bd" style="padding-top: 20px;">
         <div class="main">
-              <div id="log-list" class="weui-panel__bd" v-for="(item,index) in list" :key="index">
-                    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-                      <div class="weui-media-box__hd">
-                        <img class="weui-media-box__thumb" src="#" width="60px" height="60px">
-                      </div>
-                      <div class="weui-media-box__bd">
-                        <h4 class="weui-media-box__title">{{item.name}}</h4>
-                        <p class="weui-media-box__desc">{{item.time}}</p>
-                      </div>
-                      <div class="weui-media-box__ft" style="width:20%;text-align:right">
-                            <h4 class="weui-media-box__title color-orange font-weight-bold">{{item.grade}}</h4>
-                            <p class="weui-media-box__desc">{{item.status}}</p>
-                      </div>
-                    </a>
+                <div class="weui-panel__bd">
+                    <div v-for="(item,index) in list" :key="index">
+                        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                          <div class="weui-media-box__hd">
+                            <img class="weui-media-box__thumb" src="#" width="60px" height="60px">
+                          </div>
+                          <div class="weui-media-box__bd">
+                            <h4 class="weui-media-box__title">{{item.name}}</h4>
+                            <p class="weui-media-box__desc">{{item.time}}</p>
+                          </div>
+                          <div class="weui-media-box__ft" style="width:20%;text-align:right">
+                                <h4 class="weui-media-box__title color-orange font-weight-bold">{{item.grade}}</h4>
+                                <p class="weui-media-box__desc">{{item.status}}</p>
+                                <!-- <h4 >item.grade</h4>
+                                <p >item.status</p> -->
+                          </div>
+                        </a>
+                    </div>
                 </div>
-            <div class="weui-panel weui-panel_access">
+              <div class="weui-panel weui-panel_access">
                 <div class="weui-panel__hd" style="text-align: center" id="loading-over">已加载完毕</div>
             </div>
         </div>
+
+
     </div>
-    <bottom-nav></bottom-nav>
   </div>
 </template>
 
 <script>
-import BottomNav from "components/bottom-nav/bottom-nav";
 export default {
-    name: "about",
+    name: "invite_logs",
 
-    components: {
-        BottomNav
-    },
+    components: {},
     data() {
         return {
             list: [
