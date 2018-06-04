@@ -4,7 +4,6 @@
       share
       <div class="ono-share weui-panel weui-panel_access">
         <div class="share-header weui-panel__hd">
-
             <!-- <div class="flex-center"> -->
             <img src="#" width="100%" height="160px">
             <div class="flex-center blue-logo">
@@ -62,7 +61,6 @@
 <script>
 import {createPhoneCode, signIn} from "@/api/account_api";
 import {getCookie} from "common/js/cookies";
-
 import BottomNav from "components/bottom-nav/bottom-nav";
 
 export default {

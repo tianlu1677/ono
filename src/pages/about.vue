@@ -1,32 +1,44 @@
 <template>
-  <div class="about">
-    <div v-html="about"></div>
+  <div class="how_to_play">
+    about( 项目介绍 )
+    <div class="weui-tabber">
+    </div>
   </div>
 </template>
 
 <script>
-  import {getAbout} from "@/api/account_api";
-  export default {
-    name: "about",
-
-    components: {
-    },
+// 项目富文本
+import {getAbout} from "@/api/account_api";
+export default {
+    name: "how_to_play",
+    components: {},
     data() {
-      return {
-        about: ''
-
-      }
+        return {
+           
+        };
     },
-    async created() {
-      const res = await getAbout()
-      this.about = res.ono_about_project
+    created() {},
+    methods: {
+        hi(){
+            console.log('hi:');
+        },
+        async getAbout(){
+            const res = await getAbout({
+              params
+            });
+
+            console.log('res:',res);
+            res.status === 200 &&(
+                this.listItem = res
+            )
+        }
+    },
+    mounted(){
+        this.hi();
+        this.getAbout();
     }
-  }
+};
 </script>
 
 <style lang="scss">
-  .about {
-    padding: 20px;
-  }
-
 </style>

@@ -31,18 +31,18 @@
                 <div class="weui-panel weui-panel_access">
                     <div class="weui-panel__hd" style="padding: 0;">
                         <a @click="goLogs" class="weui-cell weui-cell_access weui-cell_link">
-                            <img class="weui-tabbar__icon " width="27px" height="27px" src="#" alt="logo">
+                            <img class="weui-tabbar__icon " width="27px" height="27px" src="../common/images/all_get.png" alt="logo">
                             <div class="weui-cell__bd margin-left-10">累积获取</div>
                             <span class="color-gray">320</span>
                             <span class="weui-cell__ft"></span>
                         </a>
-                        <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
-                            <img class="weui-tabbar__icon" width="27px" height="27px" src="#" alt="logo">
+                        <a @click="goAbout" class="weui-cell weui-cell_access weui-cell_link">
+                            <img class="weui-tabbar__icon" width="27px" height="27px" src="../common/images/how_to_play.png" alt="logo">
                             <div class="weui-cell__bd margin-left-10">项目介绍</div>
                             <span class="weui-cell__ft"></span>
                         </a>
-                        <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
-                            <img class="weui-tabbar__icon" width="27px" height="27px" src="#" alt="logo">
+                        <a @click="goPlay" class="weui-cell weui-cell_access weui-cell_link">
+                            <img class="weui-tabbar__icon" width="27px" height="27px" src="../common/images/proj_info.png" alt="logo">
                             <div class="weui-cell__bd margin-left-10">规则说明</div>
                             <span class="weui-cell__ft"></span>
                         </a>
@@ -72,6 +72,16 @@ export default {
         goLogs(){
             this.$router.push({
                 path:'/invite_logs'
+            })
+        },
+        goAbout(){
+             this.$router.push({
+                path:'/about'
+            })
+        },
+        goPlay(){
+             this.$router.push({
+                path:'/how_to_play'
             })
         }
     }

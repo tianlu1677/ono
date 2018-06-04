@@ -29,7 +29,7 @@
                     <div class="weui-cell" style="padding: 10px 10px 15px 10px;">
                         {{index + 1}}
                         <div class="weui-cell__hd" style="padding: 0 10px 0 15px;">
-                            <img width="50px" height="50px" alt="logo" src="#">
+                            <img width="50px" height="50px" alt="logo" src="../common/images/my_blue.png">
                         </div>
                         <div class="weui-cell__bd">
                             <p>{{item.phoneNumber}}</p>
@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import {getRank} from "@/api/account_api";
 import BottomNav from "components/bottom-nav/bottom-nav";
 // import VueMarquee from "vue-marquee";
 export default {
@@ -56,6 +57,7 @@ export default {
     },
     data() {
         return {
+            listItem: null,
             list: [
                 {
                     name: "小虎", //认购人   string
@@ -132,7 +134,25 @@ export default {
     },
     created() {},
 
-    methods: {}
+    methods: {
+        hi(){
+            console.log('hi:');
+        },
+        async getRank(){
+            const res = await getRank({
+
+            });
+
+            console.log('res:',res);
+            res.status === 200 &&(
+                this.listItem = res
+            )
+        }
+    },
+    mounted(){
+        this.hi();
+        this.getRank();
+    }
 };
 </script>
 

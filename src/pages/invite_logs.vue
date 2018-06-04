@@ -30,7 +30,7 @@
                     <div v-for="(item,index) in list" :key="index">
                         <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
                           <div class="weui-media-box__hd">
-                            <img class="weui-media-box__thumb" src="#" width="60px" height="60px">
+                            <img class="weui-media-box__thumb" src="../common/images/ono_logo.png" width="60px" height="60px">
                           </div>
                           <div class="weui-media-box__bd">
                             <h4 class="weui-media-box__title">{{item.name}}</h4>
@@ -39,8 +39,6 @@
                           <div class="weui-media-box__ft" style="width:20%;text-align:right">
                                 <h4 class="weui-media-box__title color-orange font-weight-bold">{{item.grade}}</h4>
                                 <p class="weui-media-box__desc">{{item.status}}</p>
-                                <!-- <h4 >item.grade</h4>
-                                <p >item.status</p> -->
                           </div>
                         </a>
                     </div>
