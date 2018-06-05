@@ -43,8 +43,8 @@
   height: 100%;
   left: 0;
   top: 0;
-  filter: alpha(opacity=75);
-  opacity: 0.75;
+  filter: alpha(opacity=80);
+  opacity: 0.80;
   position: fixed;
   z-index: 99999;
   vertical-align:middle;
@@ -96,7 +96,6 @@
 /* end */
 
 /*  login*/
-
 .login-header {
   .get-pocket {
     position: relative;

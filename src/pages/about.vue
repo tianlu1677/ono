@@ -20,7 +20,7 @@
     },
     async created() {
       const res = await getAbout()
-      this.about = res.ono_about_project
+      this.about = res.ono_how_to_play;
     },
 
     methods: {}

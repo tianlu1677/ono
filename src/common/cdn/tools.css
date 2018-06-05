@@ -22,13 +22,13 @@
 .flex-item-3{
   flex: 3;
 }
-.flex-item-7{
-  flex: 7;
+.flex-item-6{
+  flex: 6;
 }
 
 /* maigin & padding*/
 .margin-top-10 {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .margin-top-50 {

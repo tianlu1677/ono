@@ -1,11 +1,18 @@
 <template>
   <div class="sign">
-    <div class="login-header weui-panel weui-panel_access">
+       
+    <div class="ono-share login-header weui-panel weui-panel_access">
+        <div class="share-header weui-panel__hd weui-flex__item">
+        <img :src="settings.ono_giftpage_png" width="100%" height="160px">
+        <div class="flex-center blue-logo">
+          <img src="../common/images/ono_logo.png" width="54px" height="54px" alt="123">
+        </div>
+      </div>
       <div class="login-container weui-panel__bd flex-center">
         <div class="weui-media-box__hd " style="width: 90%">
           <div class="flex-center">
             <div class="width-100 font-size-36">
-              <group title="登录领取红包">
+              <group title="新用户登录领取红包">
                 <x-input title="手机号" v-model="phoneNumber" placeholder="">
                 </x-input>
                 <x-input title="验证码" v-model="checkNumber" placeholder="">
@@ -115,7 +122,11 @@
 </script>
 
 <style lang="scss">
-  .sign {
-    margin-top: 5%;
+//   .sign {
+//     margin-top: 5%;
+//   }
+
+  .login-container .weui-cells__title{
+      text-align: center;
   }
 </style>

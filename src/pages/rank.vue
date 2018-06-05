@@ -13,14 +13,16 @@
         <div v-for="(account,index) in accounts" :key="index">
           <div class="weui-cells" style="margin-top:0;height:65px">
             <div class="weui-cell" style="padding: 10px 10px 15px 10px;">
-              {{index + 1}}
-              <div class="weui-cell__hd" style="padding: 0 10px 0 15px;">
+              <div class="flex-item-1 color-gray">
+                    {{index + 1}}
+              </div>
+              <div class="weui-cell__hd flex-item-2">
                 <img width="50px" height="50px" style="border-radius: 50%" alt="logo" :src="account.avatar_url">
               </div>
-              <div class="weui-cell__bd">
+              <div class="weui-cell__bd flex-item-3">
                 <p>{{account.phone}}</p>
               </div>
-              <div class="weui-cell__ft color-orange">{{account.all_amount}}</div>
+              <div class="weui-cell__ft color-orange flex-item-6">{{account.all_amount}}</div>
             </div>
           </div>
         </div>
@@ -74,4 +76,11 @@
 </script>
 
 <style lang="scss">
+.avatar{
+    .weui-cell{
+        .text{
+            color: #8e8e8e;
+        }
+    }
+}
 </style>

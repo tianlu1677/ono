@@ -22,7 +22,7 @@
 
     async created() {
       const res = await getAbout()
-      this.how_to_play = res.ono_how_to_play
+      this.how_to_play =res.ono_about_project ;
     },
 
     methods: {
