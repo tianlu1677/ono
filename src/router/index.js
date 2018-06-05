@@ -67,7 +67,6 @@ const router = new Router({
       name: "share",
       component: Share,
       meta: {
-        auth: true,
         title: "分享"
       }
     },
@@ -76,7 +75,6 @@ const router = new Router({
       name: "sign_in",
       component: SignIn,
       meta: {
-        auth: true,
         title: "登录"
       }
     },
@@ -99,13 +97,6 @@ const router = new Router({
         title: "攻略"
       }
     },
-
-    {
-      path: "/sign_up",
-      beforeEnter() {
-        // location.href = url
-      }
-    }
   ]
 });
 
@@ -117,6 +108,16 @@ const router = new Router({
 
 router.beforeEach(async (to, from, next) => {
   let token = getToken();
+  if (to.matched.some(record => record.meta.auth)) {
+    if (!token) {
+      next({path: '/sign_in'})
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+
   // if (to.matched.some(record => record.meta.loading)) {
   //   store.commit('UPDATE_LOADING', {isLoading: true})
   // }
@@ -137,7 +138,7 @@ router.beforeEach(async (to, from, next) => {
   // } else {
   //   next()
   // }
-  next();
+  // next();
 });
 
 router.afterEach(to => {});

@@ -21,18 +21,29 @@
 </template>
 
 <script>
+  import {CellBox, Group, Cell} from 'vux'
+
   export default {
     name: "avatar",
-    components: {},
+    components: {
+      CellBox, Group, Cell
+    },
     props: {
       account: {
-        type: Object
-      }
+        type: Object,
+      },
+      position: {
+        type: String
+      },
     },
     data() {
       return {}
     },
-    computed: {},
+    computed: {
+      avatar_url() {
+        return this.account.avatar_url
+      }
+    },
     created() {
     },
     methods: {}
@@ -41,5 +52,17 @@
 </script>
 
 <style scoped lang="scss">
-
+  .avatar-wrapper {
+    /*padding: 0 20px;*/
+    .cover {
+      border-radius: 50%;
+    }
+    .desc {
+      display: flex;
+      flex-direction: column;
+      .text {
+        font-size: 14px;
+      }
+    }
+  }
 </style>

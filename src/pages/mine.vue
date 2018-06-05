@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <avatar :account="currentAccount"></avatar>
+    <avatar :account.sync="currentAccount"></avatar>
     <div class="weui-tab__bd" style="">
       <div class="main">
         <div class="weui-panel weui-panel_access">
@@ -33,24 +33,21 @@
 
 <script>
   import Avatar from "components/avatar/avatar"
-  import {getAccountInfo} from "@/api/account_api";
+  import {SettingsMixin} from 'components/mixin/settings_mixin'
   import BottomNav from "components/bottom-nav/bottom-nav";
 
   export default {
     name: "mine",
-
+    mixins: [SettingsMixin],
     components: {
       BottomNav,
       Avatar
     },
     data() {
       return {
-        currentAccount: {}
       };
     },
     async created() {
-      const res = await getAccountInfo()
-      this.currentAccount = res.account
     },
 
     methods: {}

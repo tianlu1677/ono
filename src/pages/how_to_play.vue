@@ -1,6 +1,5 @@
 <template>
   <div class="about">
-
     <div v-html="how_to_play"></div>
   </div>
 </template>
@@ -14,16 +13,17 @@
 
     components: {
     },
+
     data() {
       return {
         how_to_play: ''
       }
     },
+
     async created() {
       const res = await getAbout()
       this.how_to_play = res.ono_how_to_play
     },
-
 
     methods: {
 
@@ -31,7 +31,7 @@
   }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
   .about {
     padding: 20px;
   }
