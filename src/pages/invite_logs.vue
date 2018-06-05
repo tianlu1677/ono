@@ -1,103 +1,62 @@
 <template>
-  <div class="invite_logs">
-   invite_logs
-       <div class="weui-tab ono-header">
-           
-        <div class="box">
-            <div class="winBox">
-               <marquee class="marquee"  behavior="scroll" direction="left">最大的自由、价值平等、去中心化的文章分享中心。</marquee>
-           
-                <!-- <ul class="scroll">
-                    <li>
-                        <a href="#">最大的自由、价值平等、去中心化的文章分享中心。</a>
-                    </li>
-                    <li>
-                        <a href="#">最大的自由、价值平等、去中心化的文章分享中心。</a>
-                    </li>
-                    <li>
-                        <a href="#">最大的自由、价值平等、去中心化的文章分享中心。</a>
-                    </li>
-                    <li>
-                        <a href="#">最大的自由、价值平等、去中心化的文章分享中心。</a>
-                    </li>
-                </ul> -->
-                </div> 
-            </div>
-    </div>
-    <div class="weui-tab__bd" style="padding-top: 20px;">
-        <div class="main">
-                <div class="weui-panel__bd">
-                    <div v-for="(item,index) in list" :key="index">
-                        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-                          <div class="weui-media-box__hd">
-                            <img class="weui-media-box__thumb" src="../common/images/ono_logo.png" width="60px" height="60px">
-                          </div>
-                          <div class="weui-media-box__bd">
-                            <h4 class="weui-media-box__title">{{item.name}}</h4>
-                            <p class="weui-media-box__desc">{{item.time}}</p>
-                          </div>
-                          <div class="weui-media-box__ft" style="width:20%;text-align:right">
-                                <h4 class="weui-media-box__title color-orange font-weight-bold">{{item.grade}}</h4>
-                                <p class="weui-media-box__desc">{{item.status}}</p>
-                          </div>
-                        </a>
-                    </div>
-                </div>
-              <div class="weui-panel weui-panel_access">
-                <div class="weui-panel__hd" style="text-align: center" id="loading-over">已加载完毕</div>
-            </div>
+  <div class="home">
+    <div class="weui-tab list-header">
+      <div class="box">
+        <div class="winBox">
+          <marquee class="marquee" behavior="scroll" direction="left">最大的自由、价值平等、去中心化的文章分享中心。</marquee>
         </div>
-
-
+      </div>
     </div>
+
+    <div class="weui-tab__bd">
+      <div class="main">
+        <div id="log-list" class="weui-panel__bd" v-for="(invite_log,index) in inviteLogs" :key="index">
+          <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+              <img class="weui-media-box__thumb" :src="invite_log.account_avatar_url" width="60px" height="60px">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">{{invite_log.handle_type}}</h4>
+              <p class="weui-media-box__desc">{{invite_log.created_at}}</p>
+            </div>
+            <div class="weui-media-box__ft" style="width:20%;text-align:right">
+              <h4 class="weui-media-box__title color-orange font-weight-bold">{{invite_log.obtain_amount}}</h4>
+              <p class="weui-media-box__desc">{{invite_log.record_log}}</p>
+            </div>
+          </a>
+        </div>
+        <!--<div class="weui-panel weui-panel_access">-->
+        <!--<div class="weui-panel__hd" style="text-align: center" id="loading-over">已加载完毕</div>-->
+        <!--</div>-->
+      </div>
+    </div>
+    <bottom-nav></bottom-nav>
   </div>
 </template>
 
 <script>
-export default {
-    name: "invite_logs",
+  import {getAccountInfo, getInviteLogs} from "@/api/account_api";
 
-    components: {},
-    data() {
-        return {
-            list: [
-                {
-                    name: "M1", //认购人   string
-                    time: "2018-6-2 12:30:45",
-                    status: "待确定",
-                    grade: "+15" //订单号   string
-                },
-                {
-                    name: "M1", //认购人   string
-                    time: "2018-6-2 12:30:45",
-                    status: "待确定",
-                    grade: "+15" //订单号   string
-                },
-                {
-                    name: "新用户", //认购人   string
-                    time: "2018-6-2 12:30:45",
-                    status: "无效纪录",
-                    grade: "+100" //订单号   string
-                },
-                {
-                    name: "M1", //认购人   string
-                    time: "2018-6-2 12:30:45",
-                    status: "无效纪录",
-                    grade: "+15" //订单号   string
-                },
-                {
-                    name: "M1", //认购人   string
-                    time: "2018-6-2 12:30:45",
-                    status: "待确定",
-                    grade: "+15" //订单号   string
-                }
-            ]
-        };
+  import BottomNav from "components/bottom-nav/bottom-nav";
+
+  export default {
+    name: "about",
+    components: {
+      BottomNav
     },
-    created() {},
+    data() {
+      return {
+        currentAccount: {},
+        inviteLogs: []
+      }
+    },
+    async created() {
+      const invite_logs_res = await getInviteLogs()
+      this.inviteLogs = invite_logs_res.on_invite_logs
+    },
 
     methods: {}
-};
+  };
 </script>
 
 <style lang="scss">

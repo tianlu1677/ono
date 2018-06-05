@@ -1,6 +1,10 @@
 //@import "reset";
 @import "icons";
-@import "../cdn/jquery-weui.css";
+//@import "../cdn/jquery-weui.css";
 @import "../cdn/tools.css";
 @import "../cdn/weui.css";
 @import "./layout.scss";
+
+* {
+  touch-action: none;
+}

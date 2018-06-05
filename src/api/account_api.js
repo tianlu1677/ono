@@ -3,7 +3,7 @@ import request from './request'
 // # 用户个人信息
 export async function getAccountInfo() {
   const res = await request({
-    url: `/api/coin/v1/accounts/info.json`,
+    url: `/api/ono/v1/accounts/info.json`,
     method: 'GET',
   })
   return res.data
@@ -34,7 +34,7 @@ export async function signIn(data = {phone: '', phone_verify: ''}) {
 // # 榜单
 export async function getRank(params = {}) {
   const res = await request({
-    url: `/api/ono/v1/accounts/sign_in.json`,
+    url: `/api/ono/v1/accounts/rank.json`,
     method: 'GET',
     params: params
   })

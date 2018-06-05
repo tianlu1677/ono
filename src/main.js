@@ -5,27 +5,25 @@ import router from './router'
 import fastclick from 'fastclick'
 import store from './store'
 
-
-
 import {
   Style,
-  Toast,  
-  Dialog,
 } from 'cube-ui'
 
-Vue.use(Toast)
-Vue.use(Dialog)
-Vue.use(Alert)
-
-
-
 import {
-  Alert,
-  XDialog
+  AlertPlugin,
+  ToastPlugin,
+  XDialog,
+  XInput,
+  XButton
 } from 'vux'
 
-Vue.component('alert', Alert)
+Vue.use(AlertPlugin)
+Vue.use(ToastPlugin, {position: 'top'})
+
 Vue.component('x-dialog', XDialog)
+Vue.component('x-button', XButton)
+Vue.component('x-input', XInput)
+
 
 import ShareDialog from 'components/share-dialog/share-dialog'
 
@@ -33,19 +31,10 @@ Vue.component('share-dialog', ShareDialog, {showShare: false})
 
 import 'common/styles/index.scss'
 
-
-// 修复IOS滑动效果
-// import EdgeCheck from 'vue-edge-check'
-
-// Vue.use(EdgeCheck, {edge_duration: 1000})
-
 Vue.config.productionTip = false
 
 fastclick.attach(document.body)
 
-// Vue.use(VueLazyload, {
-  // loading: require('common/images/loading.gif')
-// })
 
 // 微信分享
 // window.wechatShare = wechatShare

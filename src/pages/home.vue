@@ -1,6 +1,4 @@
 <template>
-
-  <!-- <share-dialog></share-dialog> -->
   <div class="home">
     <div @click="show=false" class="pop-window" v-show="show">
         <div class="pop-wrapper">
