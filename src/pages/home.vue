@@ -6,7 +6,7 @@
         <div class="pop-wrapper">
             <img src="../common/images/arrows.png" alt="" width="200px" height="auto">
             <p>点击右上角按钮</p>
-            <p>邀请好友签到领取 3 个 ONO 奖励</p>
+            <p>邀请好友签到领取更多 ONO 奖励</p>
         </div>
     </div>
     home
@@ -20,7 +20,7 @@
                 </div>
                 <div class="weui-msg__opr-area margin-top-10">
                     <div class="weui-cell" style="padding:0;">
-                        <img class="weui-cell__bd " src="#" alt="大红包" width="90%" height="120px">
+                        <img class="weui-cell__bd " src="../common/images/big_red_pocket.png" alt="大红包" width="90%" height="160px">
                     </div>
                     <a @click="show=true" class="weui-btn weui-btn_warn weui-btn_md width-80 background-green margin-top-10">分享获得更多的 ONOT </a>
                 </div>

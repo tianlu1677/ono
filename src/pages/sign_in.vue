@@ -1,13 +1,12 @@
 <template>
   <div class="home">
-    <!-- <group>
-      <x-switch :title="('Show Me')" v-model="show"></x-switch>
-    </group>
-    <div v-transfer-dom>
-
-      <alert v-model="show" :title="('Congratulations')" @on-show="onShow" @on-hide="onHide"> {{ ('Your Message is sent successfully~') }}</alert>
-    </div> -->
-    <div class="login-header weui-panel weui-panel_access">
+    <div class="ono-share login-header weui-panel weui-panel_access">
+        <div class="share-header weui-panel__hd">
+            <img src="../common/images/red_pocket.png" width="100%" height="160px">
+            <div class="flex-center blue-logo">
+                <img src="../common/images/ono_logo.png" width="54px" height="54px" alt="ono_logo">
+            </div>
+        </div>
         <div class="login-container weui-panel__bd flex-center">
             <div class="weui-media-box__hd " style="width: 90%">
                 <h3 style="text-align: left">领取区块链红包</h3>

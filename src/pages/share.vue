@@ -1,13 +1,10 @@
 <template>
-
   <div class="share">
-      share
       <div class="ono-share weui-panel weui-panel_access">
         <div class="share-header weui-panel__hd">
-            <!-- <div class="flex-center"> -->
-            <img src="#" width="100%" height="160px">
+            <img src="../common/images/red_pocket.png" width="100%" height="160px">
             <div class="flex-center blue-logo">
-                <img src="#" width="54px" height="54px" alt="123">
+                <img src="../common/images/ono_logo.png" width="54px" height="54px" alt="ono_logo">
             </div>
             <div>
                 <p class="color-black font-weight-bold">ONO</p>
@@ -16,7 +13,7 @@
         </div>
         <div class="share-container weui-panel__bd">
             <div class="weui-media-box__hd">
-                <div class="flex-center flex-center-vertical margin-top-50">
+                <div class="cash-wrapper flex-center flex-center-vertical">
                     <p class="inline-block font-weight-bold  color-black  share-get-right font-size-48" id="share-get">100.00</p>
                     <p class="share-get-left">
                         <span class="with-draw">可提现</span>
@@ -28,8 +25,8 @@
         </div>
         <div class="share-bottom weui-panel__bd">
            <div class="weui-media-box__hd bottom-container">
-                <div class="weui-media-box__bd">
-                    <p class="color-pink weui-media-box__desc">本红包已经有
+                <div class="get-wrapper weui-media-box__bd">
+                    <p class="weui-media-box__desc color-red">本红包已经有
                         <span id="number">23452</span> 人领取
                     </p>
                     <a id="get-login" @click="checkLogin" class="weui-btn weui-btn_primary weui-btn_md width-80 background-red margin-top-10">
