@@ -1,3 +1,5 @@
+@import "./_variables.scss";
+
 /* bottom bar */
 .weui-tabbar {
   position: fixed;
@@ -172,11 +174,36 @@
     border-radius: 4px;
     font-weight: bold;
   }
-  .share-get-left {
-    padding: 8px;
-    top: 5px;
-    position: relative;
+
+  .share-container{
+    .cash-wrapper{
+      margin-top: 50px;
+    }
+
+    .share-get-left {
+      padding: 8px;
+      top: 5px;
+      position: relative;
+    }
+    @include screen-xsm(){
+      .cash-wrapper{
+        margin-top: 0px;
+      }
+  
+      .share-get-right{
+        font-size: 36px;
+      }
+
+      .share-get-left {
+        padding: 5px;
+        top: 3px;
+        font-size: 12px;
+        position: relative;
+      }
+    }
+ 
   }
+ 
   .blue-logo {
     position: relative;
     top: -35px;
@@ -191,6 +218,13 @@
     width: 100%;
     position: fixed;
     bottom: 0;
+
+    @include screen-xsm(){
+      .get-wrapper p{
+       position: relative;
+       top: 12px;
+      }
+    }
   }
   .weui-panel__hd:after {
     border: 0;
