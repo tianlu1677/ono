@@ -4,7 +4,7 @@
 
 ## 安装指南
 
-``` bash
+```bash
 # install dependencies
 yarn install
 
@@ -25,3 +25,21 @@ npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+---
+
+## 6.04
+
+### 新增
+
+* 增加 share 页面
+
+### 修改
+
+* 调整文字滚动效果
+* invite_logs 页面 -
+* sign_in 登录页面
+
+* 优化部分页面布局
+
+---
