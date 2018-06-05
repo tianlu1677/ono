@@ -4,7 +4,8 @@
         <div class="pop-wrapper">
             <img src="../common/images/arrows.png" alt="" width="200px" height="auto">
             <p>点击右上角按钮</p>
-            <p>邀请好友签到领取更多 ONO 奖励</p>
+            <p>发给好友或分享到朋友圈</p>
+            <p>即可坐收丰厚ONOT奖励</p>
         </div>
     </div>
     home

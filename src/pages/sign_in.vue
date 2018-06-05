@@ -3,11 +3,8 @@
     <div class="login-header weui-panel weui-panel_access">
       <div class="login-container weui-panel__bd flex-center">
         <div class="weui-media-box__hd " style="width: 90%">
-          <!--<h3 style="text-align: left">-->
-          <!--领取区块链红包-->
-          <!--</h3>-->
           <div class="flex-center">
-            <div class="width-100">
+            <div class="width-100 font-size-36">
               <group title="登录领取红包">
                 <x-input title="手机号" v-model="phoneNumber" placeholder="">
                 </x-input>
