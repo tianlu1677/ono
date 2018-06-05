@@ -14,7 +14,7 @@
             </span>
         </div>
         <div class="weui-cell__ft">
-          <p class="color-orange">666</p>
+          <p class="color-orange">{{account.all_amount}}</p>
         </div>
       </div>
     </div>

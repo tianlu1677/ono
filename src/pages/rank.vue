@@ -7,7 +7,7 @@
         </div>
       </div>
     </div>
-    <avatar :account="currentAccount"></avatar>
+    <avatar :account="currentAccount" :position="position"></avatar>
     <div class="weui-tab__bd ">
       <div class="main">
         <div v-for="(account,index) in accounts" :key="index">
@@ -47,6 +47,7 @@
     data() {
       return {
         accounts: [],
+        position: null,
         currentAccount: {}
       };
     },
@@ -59,6 +60,7 @@
       async getRank() {
         const res = await getRank();
         this.accounts = res.accounts
+        this.position = res.position
       },
       async getCurrentAccount() {
         const res = await getAccountInfo()
