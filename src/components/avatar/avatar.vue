@@ -9,7 +9,8 @@
            <span class="text">
               {{account.nickname}}
            </span>
-            <span class="text" v-if="position">
+           <!-- <img style="display:inline-block" src="../../common/images/rename_logo.png" height="25px" width="25px" alt="logo"> -->
+           <span class="text" v-if="position">
               第 {{position}} 名
             </span>
         </div>

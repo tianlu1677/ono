@@ -20,7 +20,7 @@
               <p class="weui-media-box__desc">{{invite_log.created_at}}</p>
             </div>
             <div class="weui-media-box__ft" style="width:20%;text-align:right">
-              <h4 class="weui-media-box__title color-orange font-weight-bold">{{invite_log.obtain_amount}}</h4>
+              <h4 class="weui-media-box__title color-orange font-weight-bold">+{{invite_log.obtain_amount}}</h4>
               <p class="weui-media-box__desc">{{invite_log.handle_type}}</p>
             </div>
           </a>

@@ -30,6 +30,8 @@
 </template>
 <script>
 import Avatar from "components/avatar/avatar"
+import {getAccountInfo} from "@/api/account_api";
+import {getRank} from "@/api/account_api";
 import BottomNav from "components/bottom-nav/bottom-nav";
 import ShareDialog from "components/share-dialog/share-dialog";
 export default {
@@ -44,11 +46,22 @@ export default {
             show:false,
             accounts: [],
             position: null,
+            currentAccount: {}
         };
     },
     created() {},
 
-    methods: {}
+    methods: {
+        async getRank() {
+        const res = await getRank();
+        this.accounts = res.accounts
+        this.position = res.position
+      },
+      async getCurrentAccount() {
+        const res = await getAccountInfo()
+        this.currentAccount = res
+      }
+    }
 };
 </script>
 
