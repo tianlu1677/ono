@@ -27,14 +27,16 @@
             <div v-for="(item,index) in list" :key="index">
                 <div class="weui-cells" style="margin-top:0;height:65px">
                     <div class="weui-cell" style="padding: 10px 10px 15px 10px;">
+                        <div class="flex-item-1">
                         {{index + 1}}
-                        <div class="weui-cell__hd" style="padding: 0 10px 0 15px;">
+                        </div>
+                        <div class="weui-cell__hd flex-item-1" >
                             <img width="50px" height="50px" alt="logo" src="../common/images/my_blue.png">
                         </div>
-                        <div class="weui-cell__bd">
+                        <div class="weui-cell__bd flex-item-3">
                             <p>{{item.phoneNumber}}</p>
                         </div>
-                        <div class="weui-cell__ft color-orange">{{item.grade}}</div>
+                        <div class="weui-cell__ft color-orange flex-item-7">{{item.grade}}</div>
                     </div>
                 </div>
             </div>

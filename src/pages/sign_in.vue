@@ -28,7 +28,6 @@
             </div>
         </div>
     </div>
-    <!-- <bottom-nav></bottom-nav> -->
 </template>
 
 <script>

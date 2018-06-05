@@ -28,10 +28,7 @@
             <bottom-nav></bottom-nav>
         </div>
   </div>
-
-  
 </template>
-
 <script>
 import BottomNav from "components/bottom-nav/bottom-nav";
 import ShareDialog from "components/share-dialog/share-dialog";

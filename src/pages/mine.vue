@@ -46,7 +46,6 @@
                             <div class="weui-cell__bd margin-left-10">规则说明</div>
                             <span class="weui-cell__ft"></span>
                         </a>
-                        <!-- <a href="javascript:;" class="open-popup" data-target="#about">About</a> -->
                     </div>
                 </div>
             </div>
