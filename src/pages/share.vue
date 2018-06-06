@@ -2,7 +2,7 @@
   <div class="share">
     <div class="ono-share weui-panel weui-panel_access weui-flex">
       <div class="share-header weui-panel__hd weui-flex__item">
-        <img :src="settings.ono_giftpage_png" width="100%" height="160px">
+        <img :src="settings.ono_giftpage_png" width="100%" height="160px" style="border-radius: 5px">
         <div class="flex-center blue-logo">
           <img src="../common/images/ono_logo.png" width="54px" height="54px" alt="ono_logo">
         </div>

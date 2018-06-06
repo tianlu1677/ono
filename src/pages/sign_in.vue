@@ -24,8 +24,8 @@
           </div>
         </div>
       </div>
-      <div style="padding: 20px">
-        <x-button type="warn" @click.native="sign">立即领取</x-button>
+      <div style="padding-top: 20px">
+        <x-button type="warn" :disabled="submitButton" @click.native="sign">立即领取</x-button>
       </div>
     </div>
   </div>
@@ -58,7 +58,8 @@
         title: '发送验证码',
         longTime: LongTime,
         phoneNumber: "",
-        checkNumber: ""
+        checkNumber: "",
+        submitButton: false
       };
     },
     async created() {
@@ -82,7 +83,7 @@
 
     methods: {
       async sign() {
-        if (this.phoneNumber.length === 11 && this.checkNumber.length === 4) {
+        if (this.phoneNumber.length === 11 && this.checkNumber.length === 4) {   this.submitButton = true     
           const res = await signIn({
             phone: this.phoneNumber,
             phone_verify: this.checkNumber
@@ -95,6 +96,11 @@
             window.location.reload()
             this._redirectHome()
           }
+          setTimeout(() => {
+            this.submitButton = false     
+          }, 800)
+         
+          
         } else {
           this.$vux.toast.show({text: '请输入正确的手机号和验证码', type: 'text'})
         }
@@ -125,7 +131,7 @@
         }
       },
       setInvite() {
-        const shareToken = window.localStorage.get('share')
+        const shareToken = window.localStorage.getItem('share')
         if (shareToken) {
           setInvite({share: shareToken})
           window.localStorage.removeItem('share')

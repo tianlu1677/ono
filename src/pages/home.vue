@@ -20,8 +20,8 @@
           </p>
         </div>
         <div class="weui-msg__opr-area margin-top-10">
-          <div class="weui-cell" style="padding:0;">
-            <img class="weui-cell__bd " :src="settings.ono_mainpage_png" alt="大红包" width="90%" height="180px">
+          <div class="weui-cell" style="padding:5px;">
+            <img class="weui-cell__bd " :src="settings.ono_mainpage_png" alt="" width="90%" height="180px" style="border-radius: 5px">
           </div>
           <a @click="show=true"
              class="weui-btn weui-btn_warn weui-btn_md width-80 background-green margin-top-10">
@@ -31,6 +31,8 @@
       </div>
       <bottom-nav :currentAccount="currentAccount"></bottom-nav>
     </div>
+    <!-- share pic -->
+    <img src="http://jianshu-feng.qiniudn.com/uploads/nv_photo/image/201801191924Pf3905f81b7ddd5e21c24034027122a6e.jpg" alt="" style="display: none">
   </div>
 </template>
 <script>

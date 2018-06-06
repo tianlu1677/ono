@@ -59,7 +59,7 @@ const router = new Router({
       component: InviteLogs,
       meta: {
         auth: true,
-        title: "提取记录"
+        title: "累计获取"
       }
     },
     {
