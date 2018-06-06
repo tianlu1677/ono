@@ -1,76 +1,116 @@
 <template>
   <div class="home">
     <div @click="show=false" class="pop-window" v-show="show">
-        <div class="pop-wrapper">
-            <img src="../common/images/arrows.png" alt="" width="200px" height="auto">
-            <p>点击右上角按钮</p>
-            <p>发给好友或分享到朋友圈</p>
-            <p>即可坐收丰厚ONOT奖励</p>
-        </div>
+      <div class="pop-wrapper">
+        <img src="../common/images/arrows.png" alt="" width="200px" height="auto">
+        <p>点击右上角按钮</p>
+        <p>发给好友或分享到朋友圈</p>
+        <p>即可坐收丰厚ONOT奖励</p>
+      </div>
     </div>
-     <avatar :account="currentAccount" :position="position"></avatar>
-     <div class="weui-tab__bd index-container">
-            <div class="main">
-                <div class="weui-msg" style="padding-top:0;">
-                    <p class="horn weui-msg__desc">
-                        <img class="weui-tabbar__icon new-logo" src="../common/images/news.png" alt="news">
-                      <span>
+    <avatar :account="currentAccount" :position="position"></avatar>
+    <div class="weui-tab__bd index-container">
+      <div class="main">
+        <div class="weui-msg" style="padding-top:0;">
+          <p class="horn weui-msg__desc">
+            <img class="weui-tabbar__icon new-logo" src="../common/images/news.png" alt="news">
+            <span>
                           {{settings.ono_mainpage_tips}}
                         </span>
-                    </p>
-                </div>
-                <div class="weui-msg__opr-area margin-top-10">
-                    <div class="weui-cell" style="padding:0;">
-                      <img class="weui-cell__bd " :src="settings.ono_mainpage_png" alt="大红包" width="90%" height="180px">
-                    </div>
-                  <a @click="show=true"
-                     class="weui-btn weui-btn_warn weui-btn_md width-80 background-green margin-top-10">
-                    {{settings.ono_mainpage_btn_text}}
-                  </a>
-                </div>
-            </div>
-            <bottom-nav></bottom-nav>
+          </p>
         </div>
+        <div class="weui-msg__opr-area margin-top-10">
+          <div class="weui-cell" style="padding:0;">
+            <img class="weui-cell__bd " :src="settings.ono_mainpage_png" alt="大红包" width="90%" height="180px">
+          </div>
+          <a @click="show=true"
+             class="weui-btn weui-btn_warn weui-btn_md width-80 background-green margin-top-10">
+            {{settings.ono_mainpage_btn_text}}
+          </a>
+        </div>
+      </div>
+      <bottom-nav :currentAccount="currentAccount"></bottom-nav>
+    </div>
   </div>
 </template>
 <script>
-import Avatar from "components/avatar/avatar"
-import {getAccountInfo} from "@/api/account_api";
-import {SettingsMixin} from 'components/mixin/settings_mixin'
-import BottomNav from "components/bottom-nav/bottom-nav";
+  import Avatar from "components/avatar/avatar"
+  import {getAccountInfo, updateAccount} from "@/api/account_api";
+  import {SettingsMixin} from 'components/mixin/settings_mixin'
+  import BottomNav from "components/bottom-nav/bottom-nav";
 
-export default {
+  export default {
     name: "home",
-  mixins: [SettingsMixin],
+    mixins: [SettingsMixin],
     components: {
-        BottomNav,
-        Avatar
+      BottomNav,
+      Avatar
     },
     data() {
-        return {
-            show:false,
-            accounts: [],
-            position: null,
-        };
+      return {
+        show: false,
+        accounts: [],
+        position: null,
+      };
     },
-    created() {},
+    beforeRouteEnter(to, from, next) {
+      next()
+    },
+    async created() {
+      await this.getCurrentAccount()
+      await this.goToShare()
+      await this.showWelcomeInfo()
+    },
+    async mounted() {
+
+    },
+    activated() {
+      console.log(this.currentAccount)
+    },
 
     methods: {
+      async showWelcomeInfo() {
+        if (this.currentAccount.all_amount > this.currentAccount.last_amount) {
+          const _this = this
+          this.$vux.confirm.show({
+            title: '',
+            content: _this.currentAccount.message || '恭喜您获得新积分',
+            showCancelButton: false,
+            showConfirmButton: false,
+            confirmText: '收下',
+            onConfirm() {
+              updateAccount({on_account: {last_amount: _this.currentAccount.all_amount}});
+            }
+          })
+          // this.loadAudio().play()
+          // this.loadAudio().stop()
+        }
+      },
+
+      goToShare() {
+        const query = this.$route.query
+        if (!this.currentAccount.id && query && query.type === 'share' && query.share) {
+          this.$router.push({path: '/share'})
+        }
+      }
+
     }
-};
+  };
 </script>
 
-<style lang="scss">
-.horn{
+<style scoped lang="scss">
+  .home {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .horn {
     margin: 0 10px;
     text-align: left;
     color: #000;
-}
-.avatar{
-    .weui-cell{
-        .text{
-            color: #8e8e8e;
-        }
-    }
-}
+  }
+
 </style>

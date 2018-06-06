@@ -8,7 +8,7 @@
             <router-link to="/invite_logs" tag="div" class="weui-cell weui-cell_access weui-cell_link">
               <img class="weui-tabbar__icon " width="27px" height="27px" src="../common/images/all_get.png" alt="logo">
               <div class="weui-cell__bd margin-left-10">累积获取</div>
-              <span class="color-gray">320</span>
+              <span class="color-gray">{{currentAccount.all_amount}}</span>
               <span class="weui-cell__ft"></span>
             </router-link>
             <router-link to="/about" tag="div" class="weui-cell weui-cell_access weui-cell_link">
@@ -27,7 +27,7 @@
         </div>
       </div>
     </div>
-    <bottom-nav></bottom-nav>
+    <bottom-nav :currentAccount="currentAccount"></bottom-nav>
   </div>
 </template>
 

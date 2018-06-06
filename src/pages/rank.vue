@@ -30,7 +30,7 @@
         </div>
       </div>
     </div>
-    <bottom-nav></bottom-nav>
+    <bottom-nav :currentAccount="currentAccount"></bottom-nav>
   </div>
 </template>
 

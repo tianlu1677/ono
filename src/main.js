@@ -12,6 +12,7 @@ import {
 import {
   AlertPlugin,
   ToastPlugin,
+  ConfirmPlugin,
   XDialog,
   XInput,
   XButton
@@ -19,6 +20,7 @@ import {
 
 Vue.use(AlertPlugin)
 Vue.use(ToastPlugin, {position: 'top'})
+Vue.use(ConfirmPlugin)
 
 Vue.component('x-dialog', XDialog)
 Vue.component('x-button', XButton)

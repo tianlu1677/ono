@@ -30,7 +30,7 @@ const router = new Router({
       name: "home",
       component: Home,
       meta: {
-        auth: true,
+        // auth: true,
         title: "首页",
         keepAlive: true
       }

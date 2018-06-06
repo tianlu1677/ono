@@ -5,6 +5,9 @@ export async function getAccountInfo() {
   const res = await request({
     url: `/api/ono/v1/accounts/info.json`,
     method: 'GET',
+    params: {
+      'wechat-token': localStorage.getItem('token')
+    }
   })
   return res.data
 }
@@ -77,6 +80,15 @@ export async function getAbout(params = {}) {
     url: `/api/ono/v1/site_configs/agreement.json`,
     method: 'GET',
     params: params
+  })
+  return res.data
+}
+
+export async function updateAccount(data = {}) {
+  const res = await request({
+    url: 'api/ono/v1/accounts/update_info',
+    method: 'PUT',
+    data: data
   })
   return res.data
 }

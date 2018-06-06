@@ -15,7 +15,7 @@
         <div id="log-list" class="weui-panel__bd" v-for="(invite_log,index) in inviteLogs" :key="index">
           <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
             <div class="weui-media-box__hd">
-              <img class="weui-media-box__thumb" :src="invite_log.account_avatar_url" width="60px" height="60px">
+              <img class="weui-media-box__thumb" :src="invite_log.account_avatar_url" width="50px" height="50px">
             </div>
             <div class="weui-media-box__bd">
               <h4 class="weui-media-box__title">{{invite_log.record_log}}</h4>
@@ -63,4 +63,7 @@
 </script>
 
 <style lang="scss">
+  .weui-media-box__thumb {
+
+  }
 </style>

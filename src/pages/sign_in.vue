@@ -1,6 +1,6 @@
 <template>
   <div class="sign">
-       
+
     <div class="ono-share login-header weui-panel weui-panel_access">
         <div class="share-header weui-panel__hd weui-flex__item">
         <img :src="settings.ono_giftpage_png" width="100%" height="160px">
@@ -37,6 +37,8 @@
   import BottomNav from "components/bottom-nav/bottom-nav";
   import {Group, XSwitch, Cell} from 'vux';
   import {XInput, Toast} from 'vux'
+  import {base64} from 'vux'
+
 
   const LongTime = 60
   export default {
@@ -61,7 +63,11 @@
         checkNumber: ""
       };
     },
-    created() {
+    async created() {
+      await this.getCurrentAccount()
+      if (this.currentAccount && this.currentAccount.id) {
+        this._redirectHome()
+      }
       console.log(this.currentAccount)
     },
 
@@ -73,9 +79,7 @@
     },
 
     mounted() {
-      if (this.currentAccount.id) {
-        this.$router.push({path: '/home'})
-      }
+
     },
 
     methods: {
@@ -89,7 +93,8 @@
             this.$vux.toast.show({text: res.msg, type: 'text'});
           } else {
             localStorage.setItem("token", res.token);
-            this.$router.push({path: '/home'})
+            window.location.reload()
+            this._redirectHome()
           }
         } else {
           this.$vux.toast.show({text: '请输入正确的手机号和验证码', type: 'text'})
@@ -102,7 +107,10 @@
         } else {
           this.$vux.toast.show({text: '请输入正确的手机号', type: 'text'})
         }
-
+      },
+      _redirectHome() {
+        const shareParentId = base64.encode('3427' + this.currentAccount.id);
+        this.$router.push({path: '/home', query: {type: 'share', share: shareParentId}})
       },
 
       startTimer() {
