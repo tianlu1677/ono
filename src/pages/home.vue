@@ -1,5 +1,9 @@
 <template>
   <div class="home">
+    <div style="margin:0 auto;overflow:hidden; width:0; height: 0; display: block;">
+        <img :src="settings.ono_mainpage_share_page" />
+    </div>
+
     <div @click="show=false" class="pop-window" v-show="show">
       <div class="pop-wrapper">
         <img src="../common/images/arrows.png" alt="" width="200px" height="auto">
@@ -24,15 +28,14 @@
             <img class="weui-cell__bd " :src="settings.ono_mainpage_png" alt="" width="90%" height="180px" style="border-radius: 5px">
           </div>
           <a @click="show=true"
-             class="weui-btn weui-btn_warn weui-btn_md width-80 background-green margin-top-10">
-            {{settings.ono_mainpage_btn_text}}
+             class="weui-btn weui-btn_md width-80 background-green margin-top-10">
+            <span style="color: write">{{settings.ono_mainpage_btn_text}}</span>
           </a>
         </div>
       </div>
       <bottom-nav :currentAccount="currentAccount"></bottom-nav>
     </div>
-    <!-- share pic -->
-    <img src="http://jianshu-feng.qiniudn.com/uploads/nv_photo/image/201801191924Pf3905f81b7ddd5e21c24034027122a6e.jpg" alt="" style="display: none">
+    <!-- share pic -->    
   </div>
 </template>
 <script>
@@ -92,7 +95,7 @@
       goToShare() {
         const query = this.$route.query
         if (!this.currentAccount.id && query && query.type === 'share' && query.share) {
-          window.localStorage('share', query.share)
+          window.localStorage.setItem('share', query.share)
           this.$router.push({path: '/share'})
         }
       }

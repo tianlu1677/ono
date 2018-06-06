@@ -18,7 +18,7 @@ axios.interceptors.response.use((res) => {
   if (error.response) {
     switch (error.response.status) {
       case 403:
-        window.localStorage.clear('token')
+        window.localStorage.removeItem('token')
         // window.location.reload()
         break
       default:

@@ -15,16 +15,17 @@
         <div v-for="(account,index) in accounts" :key="index">
           <div class="weui-cells" style="margin-top:0;height:65px">
             <div class="weui-cell" style="padding: 5px 10px 15px 10px;">
-              <div class="flex-item-1 color-gray">
+              <div class=" color-gray">
                     {{index + 1}}
               </div>
-              <div class="weui-cell__hd flex-item-2">
-                <img width="50px" height="50px" style="border-radius: 50%" alt="logo" :src="account.avatar_url">
+              <div class="weui-cell__hd item">
+                <img width="50px" height="50px" style="border-radius: 50%" alt="logo" :src="account.avatar_url" v-if="account.avatar_url">
+                <img  src="../common/images/ono_logo.png" width="50px" height="50px" style="border-radius: 50%" alt="" v-else>
               </div>
-              <div class="weui-cell__bd flex-item-3">
-                <p>{{account.nickname}}</p>
+              <div class="weui-cell__bd item" style="">
+                <p>{{account.nickname.toString().substr(0, 6)}}</p>
               </div>
-              <div class="weui-cell__ft color-orange flex-item-6">{{account.all_amount}}</div>
+              <div class="weui-cell__ft color-orange item">{{account.all_amount}}</div>
             </div>
           </div>
         </div>
@@ -79,5 +80,10 @@
 </script>
 
 <style lang="scss">
+  .rank {
+    .item {
+      margin-left: 10px;
+    }
+  }
 
 </style>

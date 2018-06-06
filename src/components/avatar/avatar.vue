@@ -15,7 +15,7 @@
               未登录
            </span>
 
-          <span class="text" v-if="position">
+          <span class="text" v-if="position" style="color: gray">
               第 {{position}} 名
             </span>
         </div>
@@ -66,7 +66,8 @@
           showConfirmButton: false,
           confirmText: '确定',
           onConfirm(value) {
-            updateAccount({on_account: {nickname: value}}).then(function (res) {
+            let nickname = value.substr(0, 6)
+            updateAccount({on_account: {nickname: nickname}}).then(function (res) {
               _this.account = res
             });
           }

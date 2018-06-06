@@ -3,7 +3,7 @@
 
     <div class="ono-share login-header weui-panel weui-panel_access">
       <div class="share-header weui-panel__hd weui-flex__item">
-        <img :src="settings.ono_giftpage_png" width="100%" height="160px">
+        <img :src="settings.ono_giftpage_png" width="100%" height="180px">
         <div class="flex-center blue-logo">
           <img src="../common/images/ono_logo.png" width="54px" height="54px" alt="123">
         </div>
@@ -24,10 +24,11 @@
           </div>
         </div>
       </div>
-      <div style="padding-top: 20px">
-        <x-button type="warn" :disabled="submitButton" @click.native="sign">立即领取</x-button>
-      </div>
+      
     </div>
+    <div style="padding-top: 20px; ">
+        <x-button type="warn" :disabled="submitButton" @click.native="sign" style="width: 80%;">立即领取</x-button>
+      </div>
   </div>
 </template>
 

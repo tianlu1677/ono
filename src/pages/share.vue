@@ -27,7 +27,7 @@
       <div class="share-bottom weui-panel__bd weui-flex__item">
         <div class="weui-media-box__hd bottom-container">
           <div class="weui-media-box__bd">
-            <p class="person-numebr color-pink weui-media-box__desc" style="color:#ff847d">本红包已经有
+            <p class="person-numebr color-pink weui-media-box__desc" style="color:#ff847d; text-align: center;">本红包已经有
               <span>{{number}}</span> 人领取
             </p>
             <div style="padding:0 20px">
@@ -45,7 +45,7 @@
             <h4 style="font-size:13px;font-weight:bold;" class="weui-media-box__title color-gray">活动说明</h4>
             <div class="font-size-16">
               <p style="line-height: 1.5;overflow:inherit;" class="weui-media-box__desc text-left line-height-20" id="activity-desc">
-                  1、本红包将于今日24点过期。
+                  1、本红包将于今日24点过期。（限ONO新用户领取）
                   <br>
                   2、ONO新用户（未注册用户）领取直接提取到ONO账户中，领取成功自动注册ONO账号。
                   <br>
@@ -91,7 +91,7 @@
           },1000 * Math.floor(Math.random()*10+1))
       },
       randomNumber(m,n){
-          this.number = Math.floor(Math.random()*(m-n+1)+n) || 6666;
+          this.number = 1000
       },
       goSignIn() {
         if (this.token) {

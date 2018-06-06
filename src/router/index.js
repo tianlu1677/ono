@@ -31,7 +31,7 @@ const router = new Router({
       component: Home,
       meta: {
         // auth: true,
-        title: "首页",
+        title: "ONO - In a good way",
         keepAlive: true
       }
     },
@@ -41,7 +41,7 @@ const router = new Router({
       component: Rank,
       meta: {
         auth: true,
-        title: "排行榜"
+        title: "榜单"
       }
     },
     {
@@ -67,7 +67,7 @@ const router = new Router({
       name: "share",
       component: Share,
       meta: {
-        title: "分享"
+        title: "ONO - In a good way"
       }
     },
     {
@@ -75,7 +75,7 @@ const router = new Router({
       name: "sign_in",
       component: SignIn,
       meta: {
-        title: "登录"
+        title: "新用户登录领取红包"
       }
     },
     {
@@ -84,7 +84,7 @@ const router = new Router({
       component: About,
       meta: {
         auth: true,
-        title: "关于"
+        title: "项目介绍"
       }
     },
 
@@ -94,7 +94,7 @@ const router = new Router({
       component: HowToPlay,
       meta: {
         auth: true,
-        title: "攻略"
+        title: "规则说明"
       }
     },
   ]

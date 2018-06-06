@@ -15,10 +15,15 @@
         <div id="log-list" class="weui-panel__bd" v-for="(invite_log,index) in inviteLogs" :key="index">
           <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
             <div class="weui-media-box__hd">
-              <img class="" :src="invite_log.account_avatar_url" width="50px" height="50px"  style="border-radius: 50%">
+              <img class="" :src="invite_log.account_avatar_url" width="50px" height="50px"  style="border-radius: 50%"  v-if="invite_log.account_avatar_url">
+               <img  src="../common/images/ono_logo.png" width="50px" height="50px" style="border-radius: 50%" alt="" v-else>
+
             </div>
             <div class="weui-media-box__bd">
-              <h4 class="weui-media-box__title">{{invite_log.record_log}}</h4>
+              <h4 class="weui-media-box__title">
+                <span>{{invite_log.record_log}}</span>
+                <span style="font-size: 12px;color: gray">(手机尾号{{invite_log.account_phone}})</span>
+            </h4>
               <p class="weui-media-box__desc">{{invite_log.created_at}}</p>
             </div>
             <div class="weui-media-box__ft" style="width:20%;text-align:right">
@@ -27,12 +32,16 @@
             </div>
           </a>
         </div>
-        <!--<div class="weui-panel weui-panel_access">-->
-        <!--<div class="weui-panel__hd" style="text-align: center" id="loading-over">已加载完毕</div>-->
-        <!--</div>-->
+        <div class="weui-panel weui-panel_access" v-if="inviteLogs.length>0">
+          <div class="weui-panel__hd" style="text-align: center" id="loading-over"> 已加载完毕
+          </div>
+        </div>
+        <div class="weui-panel weui-panel_access" v-if="inviteLogs.length==0">
+          <div class="weui-panel__hd" style="text-align: center" id="loading-over"> 暂时没有记录
+          </div>
+        </div>
       </div>
-    </div>
-    <bottom-nav></bottom-nav>
+    </div>    
   </div>
 </template>
 
