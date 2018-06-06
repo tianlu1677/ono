@@ -7,11 +7,15 @@
           <img style="width:50px;height:50px" class="cover" src="../../common/images/ono_logo.png" v-else>
         </div>
         <div class="weui-cell__bd desc">
-           <span class="text">
-              {{account.nickname}}
+           <span class="text" @click="editAccount" v-if="account.id">
+              {{account.nickname}} <i class="cubeic-edit"></i>
            </span>
-           <!-- <img style="display:inline-block" src="../../common/images/rename_logo.png" height="25px" width="25px" alt="logo"> -->
-           <span class="text" v-if="position">
+
+          <span class="text" @click="goSignIn" v-else>
+              未登录
+           </span>
+
+          <span class="text" v-if="position">
               第 {{position}} 名
             </span>
         </div>
@@ -25,6 +29,7 @@
 </template>
 
 <script>
+  import {getAccountInfo, updateAccount} from "@/api/account_api";
   export default {
     name: "avatar",
     components: {},
@@ -38,24 +43,43 @@
     },
     data() {
       return {
-
+        nickname: ''
       }
     },
     computed: {
       avatar_url() {
         return this.account.avatar_url
-      }
+      },
+
     },
     created() {
     },
-    methods: {}
+    methods: {
+      goSignIn() {
+        this.$router.push({path: '/sign_in'})
+      },
+      editAccount() {
+        const _this = this
+        this.$vux.confirm.prompt('新名称', {
+          title: '修改用户名',
+          showCancelButton: false,
+          showConfirmButton: false,
+          confirmText: '确定',
+          onConfirm(value) {
+            updateAccount({on_account: {nickname: value}}).then(function (res) {
+              _this.account = res
+            });
+          }
+        })
+      }
+    }
 
   }
 </script>
 
 <style scoped lang="scss">
   .avatar {
-
+    padding-top: 5px;
     /*padding: 0 20px;*/
     .cover {
       border-radius: 50%;

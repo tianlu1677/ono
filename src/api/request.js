@@ -18,6 +18,7 @@ axios.interceptors.response.use((res) => {
   if (error.response) {
     switch (error.response.status) {
       case 403:
+        window.localStorage.clear('token')
         // window.location.reload()
         break
       default:
@@ -27,8 +28,8 @@ axios.interceptors.response.use((res) => {
   return Promise.reject(error)
 })
 
-// axios.defaults.baseURL = 'http://niubibeta.com' || process.env.API_HOST || 'http://localhost:5000'
-axios.defaults.baseURL = 'http://localhost:4000'
+axios.defaults.baseURL = process.env.API_HOST || 'http://localhost:5000'
+// axios.defaults.baseURL = 'http://localhost:4000'
 axios.defaults.timeout = 5000
 
 export default async function request(options, url, message) {

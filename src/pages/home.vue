@@ -8,7 +8,7 @@
         <p>即可坐收丰厚ONOT奖励</p>
       </div>
     </div>
-    <avatar :account="currentAccount" :position="position"></avatar>
+    <avatar :account.sync="currentAccount" :position="position"></avatar>
     <div class="weui-tab__bd index-container">
       <div class="main">
         <div class="weui-msg" style="padding-top:0;">
@@ -78,7 +78,7 @@
             showCancelButton: false,
             showConfirmButton: false,
             confirmText: '收下',
-            onConfirm() {
+            onConfirm(value) {
               updateAccount({on_account: {last_amount: _this.currentAccount.all_amount}});
             }
           })
@@ -90,10 +90,10 @@
       goToShare() {
         const query = this.$route.query
         if (!this.currentAccount.id && query && query.type === 'share' && query.share) {
+          window.localStorage('share', query.share)
           this.$router.push({path: '/share'})
         }
       }
-
     }
   };
 </script>

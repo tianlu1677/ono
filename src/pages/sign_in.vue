@@ -2,7 +2,7 @@
   <div class="sign">
 
     <div class="ono-share login-header weui-panel weui-panel_access">
-        <div class="share-header weui-panel__hd weui-flex__item">
+      <div class="share-header weui-panel__hd weui-flex__item">
         <img :src="settings.ono_giftpage_png" width="100%" height="160px">
         <div class="flex-center blue-logo">
           <img src="../common/images/ono_logo.png" width="54px" height="54px" alt="123">
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-  import {createPhoneCode, signIn} from "@/api/account_api";
+  import {createPhoneCode, signIn, setInvite} from "@/api/account_api";
   import {SettingsMixin} from 'components/mixin/settings_mixin'
   import BottomNav from "components/bottom-nav/bottom-nav";
   import {Group, XSwitch, Cell} from 'vux';
@@ -44,9 +44,7 @@
   export default {
     name: "sign_in",
     mixins: [SettingsMixin],
-    directives: {
-
-    },
+    directives: {},
     components: {
       BottomNav,
       XInput,
@@ -93,6 +91,7 @@
             this.$vux.toast.show({text: res.msg, type: 'text'});
           } else {
             localStorage.setItem("token", res.token);
+            this.setInvite()
             window.location.reload()
             this._redirectHome()
           }
@@ -124,17 +123,24 @@
           this.disabledCode = false
           this.longTime = LongTime
         }
+      },
+      setInvite() {
+        const shareToken = window.localStorage.get('share')
+        if (shareToken) {
+          setInvite({share: shareToken})
+          window.localStorage.removeItem('share')
+        }
       }
     }
   };
 </script>
 
 <style lang="scss">
-//   .sign {
-//     margin-top: 5%;
-//   }
+  //   .sign {
+  //     margin-top: 5%;
+  //   }
 
-  .login-container .weui-cells__title{
-      text-align: center;
+  .login-container .weui-cells__title {
+    text-align: center;
   }
 </style>
