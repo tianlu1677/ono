@@ -3,7 +3,8 @@
     <div class="weui-cells" style="margin-top:0;width: 100%">
       <div class="weui-cell" style="">
         <div class="weui-cell__hd">
-          <img style="width:50px;height:auto" class="cover" :src="avatar_url">
+          <img style="width:50px;height:50px" class="cover" :src="avatar_url" v-if="avatar_url">
+          <img style="width:50px;height:50px" class="cover" src="../../common/images/ono_logo.png" v-else>
         </div>
         <div class="weui-cell__bd desc">
            <span class="text">
@@ -32,7 +33,7 @@
         type: Object,
       },
       position: {
-        type: String
+        type: [String, Number]
       },
     },
     data() {
@@ -54,11 +55,13 @@
 
 <style scoped lang="scss">
   .avatar {
-    padding: 0 20px;
+
+    /*padding: 0 20px;*/
     .cover {
       border-radius: 50%;
     }
     .desc {
+      margin-left: 10px;
       display: flex;
       flex-direction: column;
       .text {

@@ -3,7 +3,9 @@
     <div class="weui-tab list-header">
       <div class="box">
         <div class="winBox">
-          <marquee class="marquee" behavior="scroll" direction="left">最大的自由、价值平等、去中心化的文章分享中心。</marquee>
+          <marquee class="marquee" behavior="scroll" direction="left">
+            {{settings.ono_scroll_tips}}
+          </marquee>
         </div>
       </div>
     </div>
@@ -34,13 +36,14 @@
 
 <script>
   import Avatar from "components/avatar/avatar"
+  import {SettingsMixin} from 'components/mixin/settings_mixin'
   import {getAccountInfo} from "@/api/account_api";
   import {getRank} from "@/api/account_api";
   import BottomNav from "components/bottom-nav/bottom-nav";
   // import VueMarquee from "vue-marquee";
   export default {
     name: "rank",
-
+    mixins: [SettingsMixin],
     components: {
       BottomNav,
       Avatar
@@ -50,12 +53,12 @@
       return {
         accounts: [],
         position: null,
-        currentAccount: {}
+
       };
     },
     created() {
       this.getRank();
-      this.getCurrentAccount()
+
     },
 
     methods: {
@@ -76,11 +79,5 @@
 </script>
 
 <style lang="scss">
-.avatar{
-    .weui-cell{
-        .text{
-            color: #8e8e8e;
-        }
-    }
-}
+
 </style>

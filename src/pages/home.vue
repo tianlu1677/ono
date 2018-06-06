@@ -14,14 +14,19 @@
                 <div class="weui-msg" style="padding-top:0;">
                     <p class="horn weui-msg__desc">
                         <img class="weui-tabbar__icon new-logo" src="../common/images/news.png" alt="news">
-                        <span>最大的自由、价值平等、去中心化的文章分享中心。</span>
+                      <span>
+                          {{settings.ono_mainpage_tips}}
+                        </span>
                     </p>
                 </div>
                 <div class="weui-msg__opr-area margin-top-10">
                     <div class="weui-cell" style="padding:0;">
-                        <img class="weui-cell__bd " src="../common/images/big_red_pocket.png" alt="大红包" width="90%" height="180px">
+                      <img class="weui-cell__bd " :src="settings.ono_mainpage_png" alt="大红包" width="90%" height="180px">
                     </div>
-                    <a @click="show=true" class="weui-btn weui-btn_warn weui-btn_md width-80 background-green margin-top-10">分享获得更多的 ONOT </a>
+                  <a @click="show=true"
+                     class="weui-btn weui-btn_warn weui-btn_md width-80 background-green margin-top-10">
+                    {{settings.ono_mainpage_btn_text}}
+                  </a>
                 </div>
             </div>
             <bottom-nav></bottom-nav>
@@ -31,12 +36,12 @@
 <script>
 import Avatar from "components/avatar/avatar"
 import {getAccountInfo} from "@/api/account_api";
-import {getRank} from "@/api/account_api";
+import {SettingsMixin} from 'components/mixin/settings_mixin'
 import BottomNav from "components/bottom-nav/bottom-nav";
-import ShareDialog from "components/share-dialog/share-dialog";
+
 export default {
     name: "home",
-
+  mixins: [SettingsMixin],
     components: {
         BottomNav,
         Avatar
@@ -46,21 +51,11 @@ export default {
             show:false,
             accounts: [],
             position: null,
-            currentAccount: {}
         };
     },
     created() {},
 
     methods: {
-        async getRank() {
-        const res = await getRank();
-        this.accounts = res.accounts
-        this.position = res.position
-      },
-      async getCurrentAccount() {
-        const res = await getAccountInfo()
-        this.currentAccount = res
-      }
     }
 };
 </script>

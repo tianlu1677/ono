@@ -1,12 +1,8 @@
 <template>
   <div id="app">
     <!--<transition name="fade">-->
-    <!-- <transition name="fade"> -->
-      
       <router-view></router-view>
-     <!-- ssss      -->
-      <!-- </navigation> -->
-    <!-- </transition> -->
+    <!--</transition>-->
     <!--</transition>-->
     <!-- <loading v-model="isLoading"></loading> -->
     <!-- <share-dialog v-show="showShare"></share-dialog> -->
@@ -33,7 +29,7 @@
 
 <style lang="scss">
   .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
+    transition: opacity .3s;
   }
 
   /**/

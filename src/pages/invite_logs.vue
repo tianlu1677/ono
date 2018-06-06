@@ -3,7 +3,9 @@
     <div class="weui-tab list-header">
       <div class="box">
         <div class="winBox">
-          <marquee class="marquee" behavior="scroll" direction="left">最大的自由、价值平等、去中心化的文章分享中心。</marquee>
+          <marquee class="marquee" behavior="scroll" direction="left">
+            {{settings.ono_scroll_tips}}
+          </marquee>
         </div>
       </div>
     </div>
@@ -36,17 +38,18 @@
 
 <script>
   import {getAccountInfo, getInviteLogs} from "@/api/account_api";
+  import {SettingsMixin} from 'components/mixin/settings_mixin'
 
   import BottomNav from "components/bottom-nav/bottom-nav";
 
   export default {
     name: "about",
+    mixins: [SettingsMixin],
     components: {
       BottomNav
     },
     data() {
       return {
-        currentAccount: {},
         inviteLogs: []
       }
     },
