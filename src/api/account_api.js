@@ -48,7 +48,7 @@ export async function getRank(params = {}) {
 //
 export async function setInvite(data = {share: ''}) {
   const res = await request({
-    url: `/api/ono/v1/invite.json`,
+    url: `/api/ono/v1/accounts/invite.json`,
     method: 'POST',
     data: data
   })

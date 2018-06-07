@@ -13,6 +13,7 @@ import About from "pages/about";
 import HowToPlay from "pages/how_to_play";
 import Share from "pages/share";
 import InviteLogs from "pages/invite_logs";
+import Logout from "pages/logout"
 
 const router = new Router({
   base: "/ono",
@@ -95,6 +96,14 @@ const router = new Router({
       meta: {
         auth: true,
         title: "规则说明"
+      }
+    },
+    {
+      path: "/logout",
+      name: "logout",
+      component: Logout,
+      meta: {
+        title: "logout"
       }
     },
   ]

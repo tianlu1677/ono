@@ -24,11 +24,11 @@
           </div>
         </div>
       </div>
-      
+
     </div>
     <div style="padding-top: 20px; ">
-        <x-button type="warn" :disabled="submitButton" @click.native="sign" style="width: 80%;">立即领取</x-button>
-      </div>
+      <x-button type="warn" :disabled="submitButton" @click.native="sign" style="width: 80%;">立即领取</x-button>
+    </div>
   </div>
 </template>
 
@@ -84,7 +84,8 @@
 
     methods: {
       async sign() {
-        if (this.phoneNumber.length === 11 && this.checkNumber.length === 4) {   this.submitButton = true     
+        if (this.phoneNumber.length === 11 && this.checkNumber.length === 4) {
+          this.submitButton = true
           const res = await signIn({
             phone: this.phoneNumber,
             phone_verify: this.checkNumber
@@ -93,15 +94,15 @@
             this.$vux.toast.show({text: res.msg, type: 'text'});
           } else {
             localStorage.setItem("token", res.token);
-            this.setInvite()
+            await this.setAccountInvite()
             window.location.reload()
             this._redirectHome()
           }
           setTimeout(() => {
-            this.submitButton = false     
+            this.submitButton = false
           }, 800)
-         
-          
+
+
         } else {
           this.$vux.toast.show({text: '请输入正确的手机号和验证码', type: 'text'})
         }
@@ -131,12 +132,11 @@
           this.longTime = LongTime
         }
       },
-      setInvite() {
-        const shareToken = window.localStorage.getItem('share')
-        if (shareToken) {
-          setInvite({share: shareToken})
-          window.localStorage.removeItem('share')
-        }
+      async setAccountInvite() {
+        const shareToken = window.localStorage.getItem('share') || ''
+        await setInvite({share: shareToken, 'wechat-token': window.localStorage.getItem('token')})
+        window.localStorage.removeItem('share')
+
       }
     }
   };

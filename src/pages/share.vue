@@ -27,7 +27,7 @@
       <div class="share-bottom weui-panel__bd weui-flex__item">
         <div class="weui-media-box__hd bottom-container">
           <div class="weui-media-box__bd">
-            <p class="person-numebr color-pink weui-media-box__desc" style="color:#ff847d; text-align: center;">本红包已经有
+            <p class="person-numebr color-pink" style="color:#ff847d; text-align: center; font-size: 14px">本红包已经有
               <span>{{number}}</span> 人领取
             </p>
             <div style="padding:0 20px">
@@ -116,7 +116,7 @@
             color:#ff847d;
         }
     }
-    @media (min-width: 320px) {     
+  @media (min-width: 320px) {
     .share-bottom{
         height: 40%;
         }
