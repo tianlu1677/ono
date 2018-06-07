@@ -13,12 +13,16 @@ import {
   AlertPlugin,
   ToastPlugin,
   ConfirmPlugin,
+  WechatPlugin,
+  AjaxPlugin,
   XDialog,
   XInput,
   XButton
 } from 'vux'
 
 Vue.use(AlertPlugin)
+Vue.use(WechatPlugin)
+Vue.use(AjaxPlugin)
 Vue.use(ToastPlugin, {position: 'top'})
 Vue.use(ConfirmPlugin)
 
@@ -36,7 +40,9 @@ import 'common/styles/index.scss'
 Vue.config.productionTip = false
 
 fastclick.attach(document.body)
+import {wechatShare} from './common/js/wx_config'
 
+window.wechatShare = wechatShare
 
 // 微信分享
 // window.wechatShare = wechatShare

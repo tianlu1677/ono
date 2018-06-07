@@ -93,6 +93,14 @@ export async function updateAccount(data = {}) {
   return res.data
 }
 
+export async function getWechatApiConfig(url = '') {
+  const res = await request({
+    url: `https://api.ono.chat/api/v1/share/get_token?url=${url}`,
+    method: 'GET'
+  })
+  return res.data
+}
+
 
 
 // # 发送手机验证码

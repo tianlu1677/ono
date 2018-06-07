@@ -21,7 +21,8 @@
         </div>
         <div class="weui-msg__opr-area margin-top-10">
           <div class="weui-cell" style="padding:5px;">
-            <img class="weui-cell__bd " :src="settings.ono_mainpage_png" alt="" width="90%" height="180px" style="border-radius: 5px">
+            <img class="weui-cell__bd " :src="settings.ono_mainpage_png" alt="" width="90%" height="180px"
+                 style="border-radius: 5px">
           </div>
           <a @click="show=true"
              class="weui-btn weui-btn_md width-80 background-green margin-top-10">
@@ -35,6 +36,7 @@
   </div>
 </template>
 <script>
+  import Vue from 'vue'
   import Avatar from "components/avatar/avatar"
   import {getAccountInfo, updateAccount} from "@/api/account_api";
   import {SettingsMixin} from 'components/mixin/settings_mixin'
@@ -61,6 +63,7 @@
       await this.getCurrentAccount()
       await this.goToShare()
       await this.showWelcomeInfo()
+      await this.setShareInfo()
     },
     async mounted() {
 
@@ -86,6 +89,18 @@
           // this.loadAudio().play()
           // this.loadAudio().stop()
         }
+      },
+
+      setShareInfo() {
+        const path = window.location.href
+        window.wechatShare({
+          title: 'ONO',
+          desc: 'ONO is a Good Way',
+          link: path,
+          success: (res) => {
+            // this.courseCreateAction({course_id: this.course_id, type: 'share'})
+          }
+        });
       },
 
       goToShare() {
