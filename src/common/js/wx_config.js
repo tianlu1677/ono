@@ -1,6 +1,6 @@
 import {getWechatApiConfig} from "@/api/account_api";
 
-// import store from '../../store'
+import store from '../../store'
 
 function getJsUrl() {
   let jsUrl = ''
@@ -8,12 +8,11 @@ function getJsUrl() {
   let isWechat = navigator.userAgent.indexOf('MicroMessenger') > -1
   let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 
-  // if (isiOS && isWechat) {
-  //   jsUrl = store.state.jsUrl.split('#')[0]
-  // } else {
-  //   jsUrl = encodeURIComponent(window.location.url.split('#')[0])
-  // }
-  jsUrl = encodeURIComponent(window.location.href.split('#')[0])
+  if (isiOS && isWechat) {
+    jsUrl = encodeURIComponent(store.state.jsUrl.split('#')[0])
+  } else {
+    jsUrl = encodeURIComponent(window.location.href.split('#')[0])
+  }
   return jsUrl
 }
 
@@ -42,16 +41,17 @@ export async function wechatShare(shareData = {}) {
     'onMenuShareAppMessage',
     'onMenuShareQQ',
     'onMenuShareWeibo',
-    'onMenuShareQZone']
+    'onMenuShareQZone'
+  ]
 
 
   let data = {...defaultData, ...shareData}
-  let request_url = window.location.href.split('#')[0]
-  const res = await getWechatApiConfig(window.location.href)
+
+  const res = await getWechatApiConfig(getJsUrl())
   console.log('res', res)
 
   wx.config({
-    debug: true,
+    debug: false,
     appId: 'wxadd1f08bb1406b3e',
     timestamp: res.data.timestamp,
     nonceStr: res.data.noncestr,

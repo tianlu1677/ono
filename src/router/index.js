@@ -16,7 +16,8 @@ import InviteLogs from "pages/invite_logs";
 import Logout from "pages/logout"
 
 const router = new Router({
-  base: "/ono",
+  mode: 'history',
+  base: "/home/ono",
   routes: [
     {
       path: "/",
@@ -127,27 +128,17 @@ router.beforeEach(async (to, from, next) => {
     next()
   }
 
+  if (!store.state.jsUrl) {
+    store.commit('SET_WX_JS_URL', document.URL)
+  }
+
   // if (to.matched.some(record => record.meta.loading)) {
   //   store.commit('UPDATE_LOADING', {isLoading: true})
   // }
 
   changeDocumentTitle(to);
 
-  // if (!store.state.jsUrl && (to.fullPath.indexOf('login') < 0 || to.fullPath.indexOf('sign_up') < 0)) {
-  //   store.commit('SET_WX_JS_URL', document.URL)
-  // }
-  // if (to.matched.some(record => record.meta.auth)) {
-  //   if (token && token.length > 10) {
-  //     await store.dispatch('setCurrentAccount', token)
-  //     next()
-  //   } else {
-  //     recordLastPage(to.fullPath)
-  //     next({path: '/sign_up'})
-  //   }
-  // } else {
-  //   next()
-  // }
-  // next();
+
 });
 
 router.afterEach(to => {});

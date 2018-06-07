@@ -94,9 +94,10 @@
       setShareInfo() {
         const path = window.location.href
         window.wechatShare({
-          title: 'ONO',
+          title: this.settings.ono_mainpage_share_title,
           desc: 'ONO is a Good Way',
           link: path,
+          imgUrl: this.settings.ono_mainpage_share_page,
           success: (res) => {
             // this.courseCreateAction({course_id: this.course_id, type: 'share'})
           }
