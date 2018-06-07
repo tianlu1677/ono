@@ -95,7 +95,7 @@
         const path = window.location.href
         window.wechatShare({
           title: this.settings.ono_mainpage_share_title,
-          desc: 'ONO is a Good Way',
+          desc: this.settings.ono_share_desc,
           link: path,
           imgUrl: this.settings.ono_mainpage_share_page,
           success: (res) => {

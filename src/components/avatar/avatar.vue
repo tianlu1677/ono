@@ -66,6 +66,10 @@
           showConfirmButton: false,
           confirmText: '确定',
           onConfirm(value) {
+            if(value.length<=0) {
+              alert('请输入')
+              return
+            }
             let nickname = value.substr(0, 6)
             updateAccount({on_account: {nickname: nickname}}).then(function (res) {
               _this.account = res

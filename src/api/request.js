@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {getToken} from "@/common/js/cookies";
+import router from '@/router'
 
 // const url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxbc7ac724a2717bc0&redirect_uri=https://xinxue.niubibeta.com/wechat/sessions/new&response_type=code&scope=snsapi_userinfo#wechat_redirect"
 // const csrfToken = document.querySelector("meta[name=csrf-token]") && document.querySelector("meta[name=csrf-token]").content
@@ -18,7 +19,8 @@ axios.interceptors.response.use((res) => {
   if (error.response) {
     switch (error.response.status) {
       case 403:
-        window.localStorage.removeItem('token')
+        // window.localStorage.removeItem('token')
+        router.push({path: 'sign_in'})
         // window.location.reload()
         break
       default:
@@ -39,6 +41,7 @@ export default async function request(options, url, message) {
     data: options.data || {},
     params: {
       ...options.params,
+      'wechat-token': token
     }
   })
   if (response.status === 403) {
