@@ -1,9 +1,5 @@
 <template>
   <div class="home">
-    <div style="margin:0 auto;overflow:hidden; width:0; height: 0; display: block;">
-        <img :src="settings.ono_mainpage_share_page" />
-    </div>
-
     <div @click="show=false" class="pop-window" v-show="show">
       <div class="pop-wrapper">
         <img src="../common/images/arrows.png" alt="" width="200px" height="auto">
@@ -35,7 +31,7 @@
       </div>
       <bottom-nav :currentAccount="currentAccount"></bottom-nav>
     </div>
-    <!-- share pic -->    
+    <!-- share pic -->
   </div>
 </template>
 <script>
@@ -97,6 +93,8 @@
         if (!this.currentAccount.id && query && query.type === 'share' && query.share) {
           window.localStorage.setItem('share', query.share)
           this.$router.push({path: '/share'})
+        } else if (!this.currentAccount.id) {
+          this.$router.push({path: '/sign_in'})
         }
       }
     }
