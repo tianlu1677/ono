@@ -22,8 +22,9 @@
                 <img width="50px" height="50px" style="border-radius: 50%" alt="logo" :src="account.avatar_url" v-if="account.avatar_url">
                 <img  src="../common/images/ono_logo.png" width="50px" height="50px" style="border-radius: 50%" alt="" v-else>
               </div>
-              <div class="weui-cell__bd item" style="min-width: 20px;" v-if="account.nickname">
-                <p>{{account.nickname.substr(0, 6)}}</p>
+              <div class="weui-cell__bd item" style="min-width: 20px;" >
+                <p v-if="account.nickname">{{account.nickname.substr(0, 20)}}</p>
+                <p v-else>用户{{account.id}}</p>
               </div>
               <div class="weui-cell__ft color-orange item">{{account.all_amount}}</div>
             </div>
