@@ -31,7 +31,7 @@ export function getToken() {
   if (local_token && local_token.length > 10) {
     token = local_token
   } else {
-    token = getCookie('remember_token')
+    // token = getCookie('remember_token')
   }
   return token
 }

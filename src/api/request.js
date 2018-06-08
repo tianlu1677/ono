@@ -9,17 +9,16 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 let token = getToken()
 axios.defaults.headers = {
   'X-Requested-With': 'XMLHttpRequest',
-  'Content-Type': 'application/json',
-  'Wechat-Token': token
+  'Content-Type': 'application/json'
 }
 console.log('token...', token)
-axios.interceptors.response.use((res) => {
+axios.interceptors.response.use((res) => {  
   return res;
-}, (error) => {
-  if (error.response) {
+}, (error) => {  
+  if (error.response) {     
     switch (error.response.status) {
       case 403:
-        // window.localStorage.removeItem('token')
+        window.localStorage.removeItem('token')
         router.push({path: 'sign_in'})
         // window.location.reload()
         break
@@ -41,10 +40,10 @@ export default async function request(options, url, message) {
     data: options.data || {},
     params: {
       ...options.params,
-      'wechat-token': token
+      'wechat-token': getToken()
     }
   })
-  if (response.status === 403) {
+  if (response.status === 403) {    
     return response
   } else if (response.status === 401) {
     return response

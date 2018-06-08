@@ -67,8 +67,7 @@
       await this.getCurrentAccount()
       if (this.currentAccount && this.currentAccount.id) {
         this._redirectHome()
-      }
-      console.log(this.currentAccount)
+      }      
     },
 
     activated() {
