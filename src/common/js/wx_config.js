@@ -9,7 +9,9 @@ function getJsUrl() {
   let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 
   if (isiOS && isWechat) {
-    jsUrl = encodeURIComponent(store.state.jsUrl.split('#')[0])
+    jsUrl = store.state.jsUrl.split('#')[0]
+    // jsUrl = jsUrl.replace("&from=singlemessage&isappinstalled=0", '')
+    jsUrl = encodeURIComponent(jsUrl)    
   } else {
     jsUrl = encodeURIComponent(window.location.href.split('#')[0])
   }

@@ -60,7 +60,7 @@
         const path = "/" + type
         switch (type) {
           case 'home':
-            const shareParentId = base64.encode('3427' + this.currentAccount.id);
+            const shareParentId = this.currentAccount.id
             this.$router.push({path: '/home', query: {type: 'share', share: shareParentId}})
             break;
           case 'rank':

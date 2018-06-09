@@ -41,7 +41,7 @@
   import {getAccountInfo, updateAccount} from "@/api/account_api";
   import {SettingsMixin} from 'components/mixin/settings_mixin'
   import BottomNav from "components/bottom-nav/bottom-nav";
-
+  import {base64} from 'vux'
   export default {
     name: "home",
     mixins: [SettingsMixin],
@@ -59,17 +59,16 @@
     beforeRouteEnter(to, from, next) {
       next()
     },
-    async created() {
+    async created() {      
       await this.getCurrentAccount()
-      await this.goToShare()
+      await this.goToShare()      
       await this.showWelcomeInfo()
-      await this.setShareInfo()
+      this.setShareInfo()      
     },
     async mounted() {
-
+       
     },
-    activated() {
-      console.log(this.currentAccount)
+    async activated() {
     },
 
     methods: {
@@ -109,8 +108,19 @@
         if (!this.currentAccount.id && query && query.type === 'share' && query.share) {
           window.localStorage.setItem('share', query.share)
           this.$router.push({path: '/share'})
+          return
         } else if (!this.currentAccount.id) {
           this.$router.push({path: '/sign_in'})
+          return
+        } else {
+          // const shareParentId = base64.encode('3427' + this.currentAccount.id);
+          const shareParentId = this.currentAccount.id
+          const shareToken = this.$route.query.share
+          if(shareParentId !== shareToken) {
+            this.$router.push({path: '/home', query: {type: 'share', share: shareParentId}})
+          }
+          // 
+          // window.location.reload()
         }
       }
     }

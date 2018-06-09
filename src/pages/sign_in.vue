@@ -67,7 +67,8 @@
       await this.getCurrentAccount()
       if (this.currentAccount && this.currentAccount.id) {
         this._redirectHome()
-      }      
+      }
+      
     },
 
     activated() {
@@ -88,13 +89,12 @@
           const res = await signIn({
             phone: this.phoneNumber,
             phone_verify: this.checkNumber
-          });          
+          });
           if (res.status === 1000) {
             this.$vux.toast.show({text: res.msg, type: 'text'});
           } else {
-            console.log('xxxx', res)
             localStorage.setItem("token", res.token);
-            await this.setAccountInvite(res.token)            
+            await this.setAccountInvite()            
             this._redirectHome()
           }
           setTimeout(() => {
@@ -115,7 +115,7 @@
         }
       },
       _redirectHome() {
-        const shareParentId = base64.encode('3427' + this.currentAccount.id);
+        const shareParentId = this.currentAccount.id
         this.$router.push({path: '/home', query: {type: 'share', share: shareParentId}})
       },
 
@@ -131,9 +131,9 @@
           this.longTime = LongTime
         }
       },
-      async setAccountInvite(token) {
+      async setAccountInvite() {
         const shareToken = window.localStorage.getItem('share') || ''
-        await setInvite({share: shareToken, 'wechat-token': token})
+        await setInvite({share: shareToken, 'wechat-token': window.localStorage.getItem('token')})
         window.localStorage.removeItem('share')
 
       }
