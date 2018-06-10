@@ -60,7 +60,7 @@ export async function wechatShare(shareData = {}) {
     signature: res.data.signature,
     jsApiList: API_LIST
   })
-
+wx.ready(function () {
   wx.onMenuShareTimeline({
     title: data.title,
     link: data.link,
@@ -97,5 +97,6 @@ export async function wechatShare(shareData = {}) {
     success: data.success,
     cancel: data.cancel
   });
+})
 
 }

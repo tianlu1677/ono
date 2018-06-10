@@ -118,6 +118,12 @@ const router = new Router({
 
 router.beforeEach(async (to, from, next) => {
   let token = getToken();
+  if (!store.state.jsUrl) {
+    store.commit('SET_WX_JS_URL', document.URL)
+  }
+  
+  changeDocumentTitle(to);
+
   if (to.matched.some(record => record.meta.auth)) {
     if (!token) {
       next({path: '/sign_in'})
@@ -128,15 +134,12 @@ router.beforeEach(async (to, from, next) => {
     next()
   }
 
-  if (!store.state.jsUrl) {
-    store.commit('SET_WX_JS_URL', document.URL)
-  }
 
   // if (to.matched.some(record => record.meta.loading)) {
   //   store.commit('UPDATE_LOADING', {isLoading: true})
   // }
 
-  changeDocumentTitle(to);
+  
 
 
 });
