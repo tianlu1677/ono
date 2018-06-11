@@ -13,17 +13,10 @@ export default new Vuex.Store({
   },
   state: {
     currentAccount: undefined,
-    categories: [],
-    courseDetail: {},
-    lessonList: [],
-    lessonDetail: {},
-    learningStatus: {},
-    topicDetail: {},
     bottomNav: {home: false, topic: false, mine: false},
-
-    showShare: false,
     isLoading: false,
-    jsUrl: '', // 微信URL
+    iosJsUrl: '',// 微信URL
+    isAndroid: false
   },
   actions,
   mutations,

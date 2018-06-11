@@ -13,7 +13,7 @@ export const SettingsMixin = {
   components: {},
   async created() {
     this.settings = await getSiteSettings()
-    await this.getCurrentAccount()
+    // await this.getCurrentAccount()
   },
 
   mounted() {

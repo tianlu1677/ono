@@ -58,7 +58,8 @@
 
       };
     },
-    created() {
+    async created() {
+      await this.getCurrentAccount()
       this.getRank();
 
     },

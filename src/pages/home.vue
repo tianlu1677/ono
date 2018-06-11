@@ -72,20 +72,24 @@
     },
 
     methods: {
-
       setShareInfo() {
-        window.wechatShare({})
         if (this.currentAccount.id) {
           const path = `${window.location.origin}/home/ono/home?type=share&share=${this.currentAccount.id}`
-          window.wechatSettings({
-            title: this.settings.ono_mainpage_share_title,
-            desc: this.settings.ono_share_desc,
-            link: path,
-            imgUrl: this.settings.ono_mainpage_share_page,
-            success: (res) => {
-              // this.courseCreateAction({course_id: this.course_id, type: 'share'})
-            }
-          })
+          this.wxShare(
+            this.settings.ono_mainpage_share_title,
+            this.settings.ono_share_desc,
+            path,
+            this.settings.ono_mainpage_share_page
+          )
+          // window.wechatSettings({
+          //   title: this.settings.ono_mainpage_share_title,
+          //   desc: this.settings.ono_share_desc,
+          //   link: path,
+          //   imgUrl: this.settings.ono_mainpage_share_page,
+          //   success: (res) => {
+          //     // this.courseCreateAction({course_id: this.course_id, type: 'share'})
+          //   }
+          // })
         }
       },
 
@@ -123,7 +127,6 @@
           if (shareParentId !== shareToken) {
             this.$router.push({path: '/home', query: {type: 'share', share: shareParentId}})
           }
-          // window.location.reload()
         }
       }
     }

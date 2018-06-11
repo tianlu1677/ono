@@ -48,6 +48,7 @@
       };
     },
     async created() {
+      await this.getCurrentAccount()
     },
 
     methods: {}

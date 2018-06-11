@@ -3,6 +3,9 @@ import Router from "vue-router";
 Vue.use(Router);
 
 import store from "../store";
+import * as types from '../store/types'
+import wechat from '@/common/js/wechat'
+
 import {getToken} from "@/common/js/cookies";
 
 import Home from "pages/home";
@@ -115,14 +118,22 @@ const router = new Router({
 // 1. 如果token存在，则请求用户信息 1,获取成功，则更新store中的currentAccount,
 // 不存在或者请求不成功，则去调用微信的获取用户信息的接口，发生跳转
 // 2. 如果token 不存在，则去调用微信的接口去获取用户的信息
-
+const HOME = 'home'
 router.beforeEach(async (to, from, next) => {
   let token = getToken();
-  if (!store.state.jsUrl) {
-    store.commit('SET_WX_JS_URL', document.URL)
-  }
-  
+
   changeDocumentTitle(to);
+
+  if (!Vue.device.isAndroid) {
+    if (!store.state.iosJsUrl) {
+      let landingPage = document.URL
+      // 如果进入路由有跳转需要加入跳转后的路由名称,比如/跳转到/home
+      // if (to.name === HOME && landingPage.indexOf(HOME) === -1) {
+      //   landingPage = landingPage + HOME
+      // }
+      store.commit(types.SET_WX_JS_URL, {iosJsUrl: landingPage})
+    }
+  }
 
   if (to.matched.some(record => record.meta.auth)) {
     if (!token) {
@@ -134,17 +145,16 @@ router.beforeEach(async (to, from, next) => {
     next()
   }
 
-
-  // if (to.matched.some(record => record.meta.loading)) {
-  //   store.commit('UPDATE_LOADING', {isLoading: true})
-  // }
-
-  
-
-
 });
 
-router.afterEach(to => {});
+router.afterEach(to => {
+  let _url = window.location.origin + to.fullPath
+  if (!Vue.device.isAndroid) {
+    _url = store.state.iosJsUrl.split('#')[0]
+  }
+  _url = encodeURIComponent(_url)
+  wechat.getJSSDK(_url)
+});
 
 // 设置title
 function changeDocumentTitle(to) {

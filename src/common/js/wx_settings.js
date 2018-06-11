@@ -2,7 +2,7 @@ export async function wechatSettings(shareData = {}) {
   let defaultData = {
     title: 'ONO',
     desc: "ONO！",
-    link: window.location.href,
+    link: '',
     type: 'link',
     imgUrl: 'https://www.baidu.com/img/bd_logo1.png', //分享出来的图片的
     success: function (res) {
