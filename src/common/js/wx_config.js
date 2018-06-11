@@ -5,13 +5,18 @@ import store from '../../store'
 function getJsUrl() {
   let jsUrl = ''
   let u = navigator.userAgent;
-  let isWechat = navigator.userAgent.indexOf('MicroMessenger') > -1
+  let isWechat = (navigator.userAgent.indexOf('MicroMessenger') > -1)
   let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 
   if (isiOS && isWechat) {
-    jsUrl = store.state.jsUrl.split('#')[0]
-    // jsUrl = jsUrl.replace("&from=singlemessage&isappinstalled=0", '')
-    jsUrl = encodeURIComponent(jsUrl)    
+    // jsUrl = store.state.jsUrl.split('#')[0]
+      
+    jsUrl = window._url
+    console.log('jsUrl', jsUrl)
+    jsUrl = jsUrl.replace("&from=singlemessage&isappinstalled=0", '')
+    jsUrl = jsUrl.replace("?from=singlemessage&isappinstalled=0", '')
+    
+    jsUrl = encodeURIComponent(jsUrl)
   } else {
     jsUrl = encodeURIComponent(window.location.href.split('#')[0])
   }

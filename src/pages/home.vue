@@ -60,18 +60,33 @@
       next()
     },
     async created() {      
-      await this.getCurrentAccount()
-      await this.goToShare()      
-      await this.showWelcomeInfo()
-      this.setShareInfo()      
+      await this.getCurrentAccount()      
+      await this.showWelcomeInfo()      
+      await this.goToShare()
+      this.setShareInfo()
     },
     async mounted() {
-       
     },
     async activated() {
     },
 
     methods: {
+      
+      setShareInfo() {
+        if(this.currentAccount.id) {
+          const path = `${window.location.origin}/home/ono/home?type=share&share=${this.currentAccount.id}`
+          window.wechatShare({
+            title: this.settings.ono_mainpage_share_title,
+            desc: this.settings.ono_share_desc,
+            link: path,
+            imgUrl: this.settings.ono_mainpage_share_page,
+            success: (res) => {
+              // this.courseCreateAction({course_id: this.course_id, type: 'share'})
+            }
+          });
+        }
+      },
+
       async showWelcomeInfo() {
         if (this.currentAccount.all_amount > this.currentAccount.last_amount) {
           const _this = this
@@ -90,23 +105,9 @@
         }
       },
 
-      setShareInfo() {
-        if(this.currentAccount.id) {
-          const path = window.location.href
-          window.wechatShare({
-            title: this.settings.ono_mainpage_share_title,
-            desc: this.settings.ono_share_desc,
-            link: path,
-            imgUrl: this.settings.ono_mainpage_share_page,
-            success: (res) => {
-              // this.courseCreateAction({course_id: this.course_id, type: 'share'})
-            }
-          });
-        }
-      },
-
       goToShare() {
         const query = this.$route.query
+        console.log(this.currentAccount)        
         if (!this.currentAccount.id && query && query.type === 'share' && query.share) {
           window.localStorage.setItem('share', query.share)
           this.$router.push({path: '/share'})
