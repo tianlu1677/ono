@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html>
+  <script>
+        var _url = window.location.href;
+        console.log('widnow._url', _url)
+        window._url = _url;
+        var i = 0, count = 100,timer;
+        timer = setInterval(function () {
+          window._url = _url;
+          console.log('timer', _url)
+          i ++;
+          if(i >= count) clearInterval(timer)
+        },17)
+      </script>
   <head>
     <title>ONO</title>
     <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <meta name="description" content="ono">
     <meta name="author" content="jacksontom">
 
-    <script>
-        var _url = window.location.href;
-        window._url = _url;
-        var i = 0, count = 100,timer;
-        timer = setInterval(function () {
-          window._url = _url;
-          i ++;
-          if(i >= count) clearInterval(timer)
-        },17)
-      </script>
+
   </head>
   <body>
 

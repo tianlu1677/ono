@@ -1,5 +1,18 @@
 <!DOCTYPE html>
 <html>
+<script>
+  var _url = window.location.href;
+  console.log('widnow._url', _url)
+  window._url = _url;
+  var i = 0, count = 100,timer;
+  timer = setInterval(function () {
+    window._url = _url;
+    console.log('timer', _url)
+    i ++;
+    if(i >= count) clearInterval(timer)
+  },17)
+</script>
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport"

@@ -150,9 +150,16 @@ router.beforeEach(async (to, from, next) => {
 router.afterEach(to => {
   let _url = window.location.origin + to.fullPath
   if (!Vue.device.isAndroid) {
-    _url = store.state.iosJsUrl.split('#')[0]
+    // _url = store.state.iosJsUrl.split('#')[0]
+    _url = window._url
+    alert(`ios ${_url}`)
+    // _url = _url.replace("&from=singlemessage&isappinstalled=0", '')
+    // _url = encodeURIComponent(_url)
+  } else {
+    alert(`android ${_url}`)
+    // _url = encodeURIComponent(_url)
   }
-  _url = encodeURIComponent(_url)
+
   wechat.getJSSDK(_url)
 });
 

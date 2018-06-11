@@ -75,6 +75,7 @@
       setShareInfo() {
         if (this.currentAccount.id) {
           const path = `${window.location.origin}/home/ono/home?type=share&share=${this.currentAccount.id}`
+
           this.wxShare(
             this.settings.ono_mainpage_share_title,
             this.settings.ono_share_desc,
@@ -124,7 +125,7 @@
           // const shareParentId = base64.encode('3427' + this.currentAccount.id);
           const shareParentId = this.currentAccount.id
           const shareToken = this.$route.query.share
-          if (shareParentId !== shareToken) {
+          if (shareParentId.toString() !== shareToken) {
             this.$router.push({path: '/home', query: {type: 'share', share: shareParentId}})
           }
         }
