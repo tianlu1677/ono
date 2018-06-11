@@ -42,6 +42,7 @@
   import {SettingsMixin} from 'components/mixin/settings_mixin'
   import BottomNav from "components/bottom-nav/bottom-nav";
   import {base64} from 'vux'
+
   export default {
     name: "home",
     mixins: [SettingsMixin],
@@ -59,9 +60,9 @@
     beforeRouteEnter(to, from, next) {
       next()
     },
-    async created() {      
-      await this.getCurrentAccount()      
-      await this.showWelcomeInfo()      
+    async created() {
+      await this.getCurrentAccount()
+      await this.showWelcomeInfo()
       await this.goToShare()
       this.setShareInfo()
     },
@@ -71,11 +72,12 @@
     },
 
     methods: {
-      
+
       setShareInfo() {
-        if(this.currentAccount.id) {
+        window.wechatShare({})
+        if (this.currentAccount.id) {
           const path = `${window.location.origin}/home/ono/home?type=share&share=${this.currentAccount.id}`
-          window.wechatShare({
+          window.wechatSettings({
             title: this.settings.ono_mainpage_share_title,
             desc: this.settings.ono_share_desc,
             link: path,
@@ -83,7 +85,7 @@
             success: (res) => {
               // this.courseCreateAction({course_id: this.course_id, type: 'share'})
             }
-          });
+          })
         }
       },
 
@@ -107,7 +109,6 @@
 
       goToShare() {
         const query = this.$route.query
-        console.log(this.currentAccount)        
         if (!this.currentAccount.id && query && query.type === 'share' && query.share) {
           window.localStorage.setItem('share', query.share)
           this.$router.push({path: '/share'})
@@ -119,10 +120,9 @@
           // const shareParentId = base64.encode('3427' + this.currentAccount.id);
           const shareParentId = this.currentAccount.id
           const shareToken = this.$route.query.share
-          if(shareParentId !== shareToken) {
+          if (shareParentId !== shareToken) {
             this.$router.push({path: '/home', query: {type: 'share', share: shareParentId}})
           }
-          // 
           // window.location.reload()
         }
       }

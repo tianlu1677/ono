@@ -31,6 +31,7 @@ Vue.component('x-button', XButton)
 Vue.component('x-input', XInput)
 
 
+
 import ShareDialog from 'components/share-dialog/share-dialog'
 
 Vue.component('share-dialog', ShareDialog, {showShare: false})
@@ -41,11 +42,12 @@ Vue.config.productionTip = false
 
 fastclick.attach(document.body)
 import {wechatShare} from './common/js/wx_config'
+import {wechatSettings} from './common/js/wx_settings'
 
-window.wechatShare = wechatShare
 
 // 微信分享
-// window.wechatShare = wechatShare
+window.wechatShare = wechatShare
+window.wechatSettings = wechatSettings
 
 // 绑定路由与vuex
 const unsync = sync(store, router)
@@ -65,3 +67,4 @@ var app = new Vue({
 })
 
 // unsync()
+console.log(Vue.wechat)
