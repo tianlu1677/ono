@@ -68,7 +68,7 @@
       if (this.currentAccount && this.currentAccount.id) {
         this._redirectHome()
       }
-      
+
     },
 
     activated() {
@@ -94,7 +94,7 @@
             this.$vux.toast.show({text: res.msg, type: 'text'});
           } else {
             localStorage.setItem("token", res.token);
-            await this.setAccountInvite()            
+            await this.setAccountInvite()
             this._redirectHome()
           }
           setTimeout(() => {
@@ -116,7 +116,7 @@
       },
       _redirectHome() {
         const shareParentId = this.currentAccount.id
-        this.$router.push({path: '/home', query: {type: 'share', share: shareParentId}})
+        this.$router.push({path: '/home', query: {share: shareParentId}})
       },
 
       startTimer() {

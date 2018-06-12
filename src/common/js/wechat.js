@@ -1,5 +1,6 @@
 import Vue from 'vue'
-import {getWechatApiConfig} from "@/api/account_api";
+import axios from 'axios'
+import {getWechatApiConfig, getWechatApiConfig1} from "@/api/account_api";
 
 const jsApiList = [
   'onMenuShareTimeline',
@@ -11,15 +12,15 @@ const jsApiList = [
 export default {
   // 获取JSSDK
   getJSSDK(url) {
-    alert(`getToken==>${url}`)
+    // alert(`getToken==>${url}`)
     // https://api.ono.chat/api/v1/share/get_token?url=${url}
-    Vue.http.get('https://api.ono.chat/api/v1/share/get_token?url=' + url).then(res => {
+    getWechatApiConfig1(url).then(res => {
       const wxconfig = {
         debug: false,
         appId: 'wxadd1f08bb1406b3e',
-        timestamp: res.data.data.timestamp,
-        nonceStr: res.data.data.noncestr,
-        signature: res.data.data.signature,
+        timestamp: res.data.timestamp,
+        nonceStr: res.data.noncestr,
+        signature: res.data.signature,
         jsApiList: jsApiList
       }
       Vue.wechat.config(wxconfig)

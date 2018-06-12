@@ -74,7 +74,7 @@
     methods: {
       setShareInfo() {
         if (this.currentAccount.id) {
-          const path = `${window.location.origin}/home/ono/home?type=share&share=${this.currentAccount.id}`
+          const path = `${window.location.origin}/home/ono/home?share=${this.currentAccount.id}`
 
           this.wxShare(
             this.settings.ono_mainpage_share_title,
@@ -114,7 +114,7 @@
 
       goToShare() {
         const query = this.$route.query
-        if (!this.currentAccount.id && query && query.type === 'share' && query.share) {
+        if (!this.currentAccount.id && query && query.share) {
           window.localStorage.setItem('share', query.share)
           this.$router.push({path: '/share'})
           return
@@ -126,7 +126,7 @@
           const shareParentId = this.currentAccount.id
           const shareToken = this.$route.query.share
           if (shareParentId.toString() !== shareToken) {
-            this.$router.push({path: '/home', query: {type: 'share', share: shareParentId}})
+            this.$router.push({path: '/home', query: {share: shareParentId}})
           }
         }
       }

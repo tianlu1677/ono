@@ -101,6 +101,16 @@ export async function getWechatApiConfig(url = '') {
   return res.data
 }
 
+export async function getWechatApiConfig1(url = '') {
+  const res = await request({
+    url: '/api/ono/v1/accounts/get_wechat_token',
+    method: 'POST',
+    data: {
+      url: url
+    }
+  })
+  return res.data
+}
 
 
 // # 发送手机验证码

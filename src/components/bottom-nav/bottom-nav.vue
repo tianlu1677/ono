@@ -61,7 +61,7 @@
         switch (type) {
           case 'home':
             const shareParentId = this.currentAccount.id
-            this.$router.push({path: '/home', query: {type: 'share', share: shareParentId}})
+            this.$router.push({path: '/home', query: {share: shareParentId}})
             break;
           case 'rank':
             this.$router.push({path: '/rank'})
