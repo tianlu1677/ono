@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div @click="show=false" class="pop-window" v-show="show">
+    <div @click="showShareTip(false)" class="pop-window" v-show="show">
       <div class="pop-wrapper">
         <img src="../common/images/arrows.png" alt="" width="200px" height="auto">
         <p>点击右上角按钮</p>
@@ -24,7 +24,7 @@
             <img class="weui-cell__bd " :src="settings.ono_mainpage_png" alt="" width="90%" height="180px"
                  style="border-radius: 5px">
           </div>
-          <a @click="show=true"
+          <a @click="showShareTip(true)"
              class="weui-btn weui-btn_md width-80 background-green margin-top-10">
             <span style="color: write">{{settings.ono_mainpage_btn_text}}</span>
           </a>
@@ -64,7 +64,7 @@
       await this.getCurrentAccount()
       await this.showWelcomeInfo()
       await this.goToShare()
-      this.setShareInfo()
+      await this.setShareInfo()
     },
     async mounted() {
     },
@@ -110,6 +110,15 @@
           // this.loadAudio().play()
           // this.loadAudio().stop()
         }
+      },
+
+      showShareTip(status=true) {
+        if(status){
+          setTimeout(() => {
+            window.location.reload()            
+          }, 800);
+        }
+        this.show = status
       },
 
       goToShare() {

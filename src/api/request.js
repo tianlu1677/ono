@@ -9,7 +9,8 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 let token = getToken()
 axios.defaults.headers = {
   'X-Requested-With': 'XMLHttpRequest',
-  'Content-Type': 'application/json'
+  'Content-Type': 'application/json',
+  'Wechat-Token': token
 }
 console.log('token...', token)
 axios.interceptors.response.use((res) => {  
@@ -18,7 +19,7 @@ axios.interceptors.response.use((res) => {
   if (error.response) {     
     switch (error.response.status) {
       case 403:
-        window.localStorage.removeItem('token')
+        // window.localStorage.removeItem('token')
         router.push({path: 'sign_in'})
         // window.location.reload()
         break

@@ -75,13 +75,13 @@
     },
     data() {
       return {
-          number: null
+          number: 23056
       };
     },
     created() {
     },
     mounted(){
-        this.randomNumber(40000,200);
+        // this.randomNumber(40000,200);
         this.addNumber();
     },
     methods: {

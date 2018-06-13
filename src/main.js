@@ -75,4 +75,4 @@ var app = new Vue({
 })
 
 // unsync()
-console.log(Vue.wechat)
+// console.log(Vue.wechat)
