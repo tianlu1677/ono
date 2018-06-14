@@ -113,7 +113,11 @@
       },
 
       showShareTip(status=true) {
-        if(status){
+        let u = navigator.userAgent;
+        let isWechat = (navigator.userAgent.indexOf('MicroMessenger') > -1)
+        let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+        if(status && isWechat && isiOS){
           setTimeout(() => {
             window.location.reload()            
           }, 800);

@@ -33,6 +33,7 @@
 
 <style scoped lang="scss">
   .about {
+    height: 100%;
     padding: 20px;
   }
 </style>

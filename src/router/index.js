@@ -148,7 +148,7 @@ router.beforeEach(async (to, from, next) => {
 });
 
 router.afterEach(to => {
-  let _url = window.location.origin + to.fullPath
+  let _url = window.location.href
   if (!Vue.device.isAndroid) {
     _url = store.state.iosJsUrl.split('#')[0]
     // _url = window._url
