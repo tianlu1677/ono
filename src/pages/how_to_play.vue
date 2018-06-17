@@ -34,6 +34,7 @@
 <style scoped lang="scss">
   .about {
     height: 100%;
+    overflow: auto;
     padding: 20px;
   }
 </style>

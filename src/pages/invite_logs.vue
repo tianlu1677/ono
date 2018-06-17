@@ -32,7 +32,11 @@
             </div>
           </a>
         </div>
-        <div class="weui-panel weui-panel_access" v-if="inviteLogs.length>0">
+        <div class="weui-panel weui-panel_access" v-if="!last_page">
+          <div class="weui-panel__hd" style="text-align: center" id="loading-over" @click="loadMore"> 点击加载更多
+          </div>
+        </div>
+        <div class="weui-panel weui-panel_access" v-if="last_page">
           <div class="weui-panel__hd" style="text-align: center" id="loading-over"> 已加载完毕
           </div>
         </div>
@@ -59,15 +63,30 @@
     },
     data() {
       return {
-        inviteLogs: []
+        inviteLogs: [],
+        next_page: 1,
+        last_page: false
       }
     },
     async created() {
       const invite_logs_res = await getInviteLogs()
       this.inviteLogs = invite_logs_res.on_invite_logs
+      this.next_page = invite_logs_res.next_page
+      this.last_page = invite_logs_res.last_page
     },
 
-    methods: {}
+    methods: {
+      async loadMore() {
+        if(!this.last_page) {
+          const invite_logs_res = await getInviteLogs({page: this.next_page})
+          this.inviteLogs = this.inviteLogs.concat(invite_logs_res.on_invite_logs)
+          this.next_page = invite_logs_res.next_page
+          this.last_page = invite_logs_res.last_page
+        } else {
+          this.last_page=true
+        }
+      }
+    }
   };
 </script>
 

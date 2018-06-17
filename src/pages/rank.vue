@@ -83,6 +83,8 @@
 
 <style lang="scss">
   .rank {
+    overflow: auto;
+    min-height: 700px;
     .item {
       margin-left: 10px;
     }

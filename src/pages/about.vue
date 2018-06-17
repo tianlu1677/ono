@@ -29,7 +29,9 @@
 
 <style scoped lang="scss">
   .about {
+    overflow: auto;
     height: 100%;
+    min-height: 700px;
     padding: 20px;
   }
 </style>
