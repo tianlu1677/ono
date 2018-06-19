@@ -18,6 +18,10 @@ import Share from "pages/share";
 import InviteLogs from "pages/invite_logs";
 import Logout from "pages/logout"
 
+import Gift from "pages/gift"
+import Login from "pages/login"
+import Welcome from "pages/welcome"
+
 const router = new Router({
   mode: 'history',
   base: "/home/ono",
@@ -30,6 +34,32 @@ const router = new Router({
       path: "*",
       redirect: "/home"
     },
+    {
+      path: "/gift",
+      name: "gift",
+      component: Gift,
+      meta: {
+        // auth: true,
+        title: "ONO - In a good way",
+      }
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: Login,
+      meta: {
+        title: "新用户登录领取红包",
+      }
+    },
+    {
+      path: "/welcome",
+      name: "welcome",
+      component: Welcome,
+      meta: {
+        title: "获取更多奖励",
+      }
+    },
+
     {
       path: "/home",
       name: "home",

@@ -34,6 +34,17 @@ export async function signIn(data = {phone: '', phone_verify: ''}) {
   return res.data
 }
 
+
+// # 手机验证码登录 团队
+export async function login(data = {phone: '', phone_verify: '', account_id: ''}) {
+  const res = await request({
+    url: `/api/ono/v1/accounts/login.json`,
+    method: 'POST',
+    data: data
+  })
+  return res.data
+}
+
 // # 榜单
 export async function getRank(params = {}) {
   const res = await request({

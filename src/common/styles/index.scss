@@ -6,5 +6,6 @@
 @import "./layout.scss";
 
 * {
-  touch-action: none;
+  //touch-action: none;
+  touch-action: auto;
 }
