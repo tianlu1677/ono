@@ -27,13 +27,10 @@
       <div class="share-bottom weui-panel__bd weui-flex__item">
         <div class="weui-media-box__hd bottom-container">
           <div class="weui-media-box__bd">
-            <p class="person-numebr color-pink" style="color:#ff847d; text-align: center; font-size: 20px"
-               v-if="currentAccount.status !== 'new_user' && currentAccount.status !== 'old_user'">
-              恭喜登记成功! 正在排队领取
+            <p class="person-numebr color-pink" style="color:#ff847d; text-align: center; font-size: 20px">
+              恭喜登记成功！正在排队领取
             </p>
-            <p class="person-numebr color-pink" style="color:#ff847d; text-align: center; font-size: 20px" v-else>
-              恭喜领取成功!
-            </p>
+
 
             <div style="padding:0 20px">
               <x-button type="warn" @click.native="goSignIn" class="margin-top-10">

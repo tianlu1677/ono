@@ -52,7 +52,7 @@
             </div>
             <div class="weui-media-box__bd">
               <h4 class="weui-media-box__title">
-                <span>手机尾号{{account.phone.slice(6, 10)}}</span>
+                <span>手机尾号 {{account.phone.slice(7, 11)}}</span>
               </h4>
               <p class="weui-media-box__desc">{{account.created_at}}</p>
             </div>
