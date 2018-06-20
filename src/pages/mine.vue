@@ -22,6 +22,13 @@
               <div class="weui-cell__bd margin-left-10">规则说明</div>
               <span class="weui-cell__ft"></span>
             </router-link>
+            <router-link to="/team_accounts" tag="div" class="weui-cell weui-cell_access weui-cell_link"
+                         v-if="currentAccount.on_team_id && currentAccount.role === 'team_user'">
+              <img class="weui-tabbar__icon" width="27px" height="27px" src="../common/images/friend_light.png"
+                   alt="logo">
+              <div class="weui-cell__bd margin-left-10">团队战绩</div>
+              <span class="weui-cell__ft"></span>
+            </router-link>
             <!-- <a href="javascript:;" class="open-popup" data-target="#about">About</a> -->
           </div>
         </div>

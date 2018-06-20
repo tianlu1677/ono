@@ -21,6 +21,7 @@ import Logout from "pages/logout"
 import Gift from "pages/gift"
 import Login from "pages/login"
 import Welcome from "pages/welcome"
+import TeamAccounts from "pages/team_accounts"
 
 const router = new Router({
   mode: 'history',
@@ -57,6 +58,14 @@ const router = new Router({
       component: Welcome,
       meta: {
         title: "获取更多奖励",
+      }
+    },
+    {
+      path: "/team_accounts",
+      name: "team_accounts",
+      component: TeamAccounts,
+      meta: {
+        title: "团队战绩",
       }
     },
 

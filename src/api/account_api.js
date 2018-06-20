@@ -45,6 +45,17 @@ export async function login(data = {phone: '', phone_verify: '', account_id: ''}
   return res.data
 }
 
+// #  团队战绩
+export async function teamAccounts(params = {}) {
+  const res = await request({
+    url: `/api/ono/v1/accounts/team.json`,
+    method: 'GET',
+    params: params
+  })
+  return res.data
+}
+
+
 // # 榜单
 export async function getRank(params = {}) {
   const res = await request({
