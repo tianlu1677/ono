@@ -9,8 +9,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 let token = getToken()
 axios.defaults.headers = {
   'X-Requested-With': 'XMLHttpRequest',
-  'Content-Type': 'application/json',
-  'Wechat-Token': token
+  'Content-Type': 'application/json'  
 }
 console.log('token...', token)
 axios.interceptors.response.use((res) => {  

@@ -99,7 +99,7 @@
             this.$vux.toast.show({text: res.msg, type: 'text'});
           } else {
             localStorage.setItem("token", res.token);
-            await this.setAccountInvite()
+            await this.setAccountInvite(res.token)
             this._redirectHome()
           }
           setTimeout(() => {
@@ -136,9 +136,9 @@
           this.longTime = LongTime
         }
       },
-      async setAccountInvite() {
+      async setAccountInvite(token = '') {
         const shareToken = window.localStorage.getItem('share') || ''
-        // await setInvite({share: shareToken, 'wechat-token': window.localStorage.getItem('token')})
+        await setInvite({share: shareToken, 'wechat-token': token})
         window.localStorage.removeItem('share')
 
       }
